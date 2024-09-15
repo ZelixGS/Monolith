@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://bf737aaakfwq5"]
+
+[ext_resource type="Script" path="res://Scenes/GameObjects/Lever/Lever.gd" id="1_5xgr0"]
+[ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="1_ggi2u"]
+[ext_resource type="PackedScene" uid="uid://cyoi7r00qpkgd" path="res://Scenes/Components/Interactable/Interactable.tscn" id="3_2pkg0"]
+[ext_resource type="Script" path="res://Scripts/Classes/ExtendedSprite2D.gd" id="3_k5ely"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nox16"]
+size = Vector2(16, 16)
+
+[node name="Lever" type="Node2D"]
+script = ExtResource("1_5xgr0")
+
+[node name="ExtendedSprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.862745, 0.0784314, 0.235294, 1)
+texture = ExtResource("1_ggi2u")
+region_enabled = true
+region_rect = Rect2(48, 160, 16, 16)
+script = ExtResource("3_k5ely")
+
+[node name="Interactable" parent="." instance=ExtResource("3_2pkg0")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_nox16")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="interaction" from="Interactable" to="." method="_on_interactable_interaction"]

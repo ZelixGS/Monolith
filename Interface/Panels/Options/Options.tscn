@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://qrgyr4lgsect"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_4d85k"]
+[ext_resource type="Texture2D" uid="uid://nlrsjcsi3uy2" path="res://Assets/UI/Options.png" id="1_h71x7"]
+[ext_resource type="Script" path="res://Interface/Panels/Options/OptionsButton.gd" id="2_1yqup"]
+
+[node name="Options" type="PanelContainer"]
+theme = ExtResource("1_4d85k")
+script = ExtResource("2_1yqup")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Button" type="TextureButton" parent="MarginContainer"]
+self_modulate = Color(0.890196, 0.811765, 0.705882, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("1_h71x7")
+stretch_mode = 5
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://boj5oqqwh1t62"]
+
+[ext_resource type="Script" path="res://Scenes/GameObjects/Pickups/HealthPotion/HealthPotion.gd" id="1_30xfy"]
+[ext_resource type="Script" path="res://Scripts/Classes/ExtendedSprite2D.gd" id="2_jhtkb"]
+[ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="2_o27le"]
+[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector/PlayerDetector.tscn" id="3_kfpjt"]
+
+[node name="HealthPotion" type="Node2D"]
+script = ExtResource("1_30xfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.423529, 0.666667, 0.964706, 1)
+texture = ExtResource("2_o27le")
+region_enabled = true
+region_rect = Rect2(544, 208, 16, 16)
+script = ExtResource("2_jhtkb")
+
+[node name="PlayerDetector" parent="." instance=ExtResource("3_kfpjt")]
+visible = false
+
+[connection signal="entered" from="PlayerDetector" to="." method="_on_player_detector_entered"]

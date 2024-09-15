@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MonsterStats" load_steps=3 format=3 uid="uid://c8fl7chyxxh8o"]
+
+[ext_resource type="Script" path="res://Resources/Classes/MonsterStats.gd" id="1_55ccl"]
+[ext_resource type="Texture2D" uid="uid://bbrepkf8c8ghm" path="res://Assets/Sprites/Monsters/Skeleton.png" id="2_8fctx"]
+
+[resource]
+script = ExtResource("1_55ccl")
+monster_name = "Skeleton A"
+health = 300
+attack = 30
+defense = 5
+gold = 100
+sprite = ExtResource("2_8fctx")
+color = Color(0.960784, 0.960784, 0.960784, 1)
+hover = false

@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="GameResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://Resources/Classes/GameRes.gd" id="1_cbogd"]
+
+[resource]
+script = ExtResource("1_cbogd")
+player_position = Vector2(152, 216)
+player_health = 2600
+player_attack = 10
+player_defense = 5
+player_gold = 5
+keys = {}
+level_data = {
+"LevelOne": {
+"AttackPowerUp": 0,
+"AttackPowerUp2": 0,
+"AttackPowerUp3": 0,
+"BigHealthPotion": 1,
+"Door": 2,
+"HealthPotion": 1,
+"HealthPotion2": 1,
+"HealthPotion3": 1,
+"Key": 0,
+"Monster": 0,
+"Monster2": 0
+}
+}

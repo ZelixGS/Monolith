@@ -1,0 +1,227 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0p7mafexsyw"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_d37xl"]
+[ext_resource type="Texture2D" uid="uid://dmppporekwjmk" path="res://Assets/UI/Up.png" id="2_n036b"]
+[ext_resource type="Script" path="res://Interface/Panels/MobileKeys/MobileKeys.gd" id="2_qam6x"]
+[ext_resource type="Texture2D" uid="uid://doxjnydotntnu" path="res://Assets/UI/Left.png" id="3_8tckp"]
+[ext_resource type="Texture2D" uid="uid://bjtfdraad5gvv" path="res://Assets/UI/Borders/Simple/4x/Panel.png" id="3_clpah"]
+[ext_resource type="Texture2D" uid="uid://dw461q5x0pdx6" path="res://Assets/UI/Down.png" id="4_osoxf"]
+[ext_resource type="Texture2D" uid="uid://ys0ispthv355" path="res://Assets/UI/Right.png" id="5_32c7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukcc7"]
+size = Vector2(96, 96)
+
+[node name="MobileKeys" type="PanelContainer"]
+offset_right = 256.0
+offset_bottom = 184.0
+mouse_filter = 2
+theme = ExtResource("1_d37xl")
+script = ExtResource("2_qam6x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.25098)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_clpah")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/NinePatchRect"]
+self_modulate = Color(0.890196, 0.811765, 0.705882, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_8tckp")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/NinePatchRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TouchLeft" type="TouchScreenButton" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/NinePatchRect/TextureRect/Control"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_ukcc7")
+action = "move_left"
+
+[node name="Middle" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.25098)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_clpah")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer/NinePatchRect"]
+self_modulate = Color(0.890196, 0.811765, 0.705882, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_n036b")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer/NinePatchRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TouchUp" type="TouchScreenButton" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer/NinePatchRect/TextureRect/Control"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_ukcc7")
+action = "move_up"
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2"]
+self_modulate = Color(1, 1, 1, 0.25098)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_clpah")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2/NinePatchRect"]
+self_modulate = Color(0.890196, 0.811765, 0.705882, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_osoxf")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2/NinePatchRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TouchDown" type="TouchScreenButton" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2/NinePatchRect/TextureRect/Control"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_ukcc7")
+action = "move_down"
+
+[node name="Right" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer"]
+self_modulate = Color(1, 1, 1, 0.25098)
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("3_clpah")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer/NinePatchRect"]
+self_modulate = Color(0.890196, 0.811765, 0.705882, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_32c7j")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer/NinePatchRect/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TouchRight" type="TouchScreenButton" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer/NinePatchRect/TextureRect/Control"]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_ukcc7")
+action = "move_right"
+
+[connection signal="resized" from="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/NinePatchRect" to="." method="_on_nine_patch_rect_resized"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/NinePatchRect/TextureRect/Control/TouchLeft" to="." method="_on_touch_left_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer/NinePatchRect/TextureRect/Control/TouchUp" to="." method="_on_touch_left_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2/NinePatchRect/TextureRect/Control/TouchDown" to="." method="_on_touch_left_pressed"]
+[connection signal="pressed" from="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer/NinePatchRect/TextureRect/Control/TouchRight" to="." method="_on_touch_left_pressed"]

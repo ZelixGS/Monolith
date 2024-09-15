@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://dag18ww4h77yh"]
+
+[ext_resource type="Script" path="res://Scenes/GameObjects/Monster/Monster.gd" id="1_4cnp4"]
+[ext_resource type="Script" path="res://Scripts/Classes/ExtendedSprite2D.gd" id="2_77xiq"]
+[ext_resource type="Texture2D" uid="uid://m6r7k6bbrhc7" path="res://Assets/Sprites/Monsters/Bat.png" id="2_r21bf"]
+[ext_resource type="Script" path="res://Scenes/Components/AnimationComponents/Hover/Hover.gd" id="5_6gsxq"]
+[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector/PlayerDetector.tscn" id="5_xh0s7"]
+
+[node name="Monster" type="Node2D" groups=["monster"]]
+script = ExtResource("1_4cnp4")
+
+[node name="ExtendedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -0.638228)
+texture = ExtResource("2_r21bf")
+region_rect = Rect2(464, 96, 16, 16)
+script = ExtResource("2_77xiq")
+
+[node name="Hover" type="Node" parent="ExtendedSprite2D"]
+script = ExtResource("5_6gsxq")
+
+[node name="PlayerDetector" parent="." instance=ExtResource("5_xh0s7")]
+
+[connection signal="entered" from="PlayerDetector" to="." method="_on_player_detector_entered"]

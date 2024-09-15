@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://c5mnnn7roloes"]
+
+[ext_resource type="PackedScene" uid="uid://qrgyr4lgsect" path="res://Interface/Panels/Options/Options.tscn" id="1_pkb1i"]
+[ext_resource type="PackedScene" uid="uid://dpu50x45v2jjw" path="res://Interface/Panels/Floor/Floor.tscn" id="2_i3vf6"]
+[ext_resource type="PackedScene" uid="uid://r733d2nbgj72" path="res://Interface/Panels/Stats/Stats.tscn" id="3_o8nvp"]
+[ext_resource type="PackedScene" uid="uid://qgn2rg08cjo3" path="res://Interface/Panels/Inventory/Inventory.tscn" id="5_mwlfw"]
+[ext_resource type="PackedScene" uid="uid://dxk7fu6fat4iw" path="res://Interface/Panels/Monster/Monster.tscn" id="7_rd8ee"]
+[ext_resource type="PackedScene" uid="uid://d0p7mafexsyw" path="res://Interface/Panels/MobileKeys/MobileKeys.tscn" id="8_yr87i"]
+
+[node name="LeftPanel" type="VBoxContainer"]
+offset_right = 310.0
+offset_bottom = 632.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Options" parent="HBoxContainer" instance=ExtResource("1_pkb1i")]
+layout_mode = 2
+
+[node name="Floor" parent="HBoxContainer" instance=ExtResource("2_i3vf6")]
+layout_mode = 2
+
+[node name="Stats" parent="." instance=ExtResource("3_o8nvp")]
+layout_mode = 2
+
+[node name="MonsterStats" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MonsterPanel" parent="MonsterStats" instance=ExtResource("7_rd8ee")]
+layout_mode = 2
+
+[node name="Inventory" parent="." instance=ExtResource("5_mwlfw")]
+layout_mode = 2
+
+[node name="MobileKeypad" parent="." instance=ExtResource("8_yr87i")]
+layout_mode = 2
+size_flags_vertical = 3

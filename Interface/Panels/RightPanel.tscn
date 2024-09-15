@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://cexuceb2niyai"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_spkup"]
+[ext_resource type="PackedScene" uid="uid://rfmsogyqd0r1" path="res://Interface/Panels/GameTimer/GameTimer.tscn" id="1_ubb8q"]
+[ext_resource type="PackedScene" uid="uid://qrgyr4lgsect" path="res://Interface/Panels/Options/Options.tscn" id="2_vioy0"]
+[ext_resource type="PackedScene" uid="uid://dxk7fu6fat4iw" path="res://Interface/Panels/Monster/Monster.tscn" id="7_umfm8"]
+[ext_resource type="PackedScene" uid="uid://d0p7mafexsyw" path="res://Interface/Panels/MobileKeys/MobileKeys.tscn" id="8_n5r5u"]
+
+[node name="RightPanel" type="VBoxContainer"]
+offset_right = 312.0
+offset_bottom = 794.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="GameTimer" parent="HBoxContainer" instance=ExtResource("1_ubb8q")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Options" parent="HBoxContainer" instance=ExtResource("2_vioy0")]
+visible = false
+layout_mode = 2
+
+[node name="MonsterPanel" parent="." instance=ExtResource("7_umfm8")]
+layout_mode = 2
+
+[node name="Keypad" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_spkup")
+
+[node name="MobileKeypad" parent="Keypad" instance=ExtResource("8_n5r5u")]
+layout_mode = 2
+size_flags_vertical = 3

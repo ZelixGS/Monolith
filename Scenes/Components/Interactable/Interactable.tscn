@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyoi7r00qpkgd"]
+
+[ext_resource type="Script" path="res://Scenes/Components/Interactable/Interactable.gd" id="1_kme6u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vn85t"]
+radius = 6.0
+
+[node name="Interactable" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+monitorable = false
+script = ExtResource("1_kme6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_vn85t")
+debug_color = Color(0.7, 0.283553, 0, 0.42)

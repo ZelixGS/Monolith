@@ -1,0 +1,173 @@
+[gd_scene load_steps=8 format=3 uid="uid://d0p7mafexsyw"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_d37xl"]
+[ext_resource type="Texture2D" uid="uid://dmppporekwjmk" path="res://Assets/UI/Up.png" id="2_n036b"]
+[ext_resource type="Script" path="res://Interface/Panels/MobileKeys/MobileKeys.gd" id="2_qam6x"]
+[ext_resource type="Texture2D" uid="uid://doxjnydotntnu" path="res://Assets/UI/Left.png" id="3_8tckp"]
+[ext_resource type="Texture2D" uid="uid://dw461q5x0pdx6" path="res://Assets/UI/Down.png" id="4_osoxf"]
+[ext_resource type="Texture2D" uid="uid://ys0ispthv355" path="res://Assets/UI/Right.png" id="5_32c7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ll4i0"]
+size = Vector2(369, 369)
+
+[node name="MobileKeys" type="PanelContainer"]
+offset_right = 1640.0
+offset_bottom = 1172.0
+theme = ExtResource("1_d37xl")
+script = ExtResource("2_qam6x")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="Left" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Left" type="Button" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer"]
+unique_name_in_owner = true
+modulate = Color(0.890196, 0.811765, 0.705882, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/Left"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Left/AspectRatioContainer/Left/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("3_8tckp")
+stretch_mode = 5
+
+[node name="Middle" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer"]
+position = Vector2(174, 272)
+shape = SubResource("RectangleShape2D_ll4i0")
+
+[node name="Up" type="Button" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer"]
+unique_name_in_owner = true
+modulate = Color(0.890196, 0.811765, 0.705882, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer/Up"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer/Up/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_n036b")
+stretch_mode = 5
+
+[node name="AspectRatioContainer2" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Down" type="Button" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2"]
+unique_name_in_owner = true
+modulate = Color(0.890196, 0.811765, 0.705882, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2/Down"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Middle/AspectRatioContainer2/Down/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("4_osoxf")
+stretch_mode = 5
+
+[node name="Right" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Right" type="Button" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer"]
+unique_name_in_owner = true
+modulate = Color(0.890196, 0.811765, 0.705882, 1)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_vertical = 3
+focus_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer/Right"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/HBoxContainer/Right/AspectRatioContainer/Right/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("5_32c7j")
+stretch_mode = 5

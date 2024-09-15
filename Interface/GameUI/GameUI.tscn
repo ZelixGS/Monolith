@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://cd7ghpdngult5"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_y20t2"]
+[ext_resource type="Texture2D" uid="uid://cxwlg10wpa62o" path="res://Assets/UI/Icons/OK.png" id="2_nfv3e"]
+[ext_resource type="Texture2D" uid="uid://cebq0lpfn20hd" path="res://Assets/UI/Icons/NO.png" id="3_dwdr3"]
+
+[node name="GameUI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_y20t2")
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 240.0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Hello Brave Souls! Lorem ipsum odor amet, consectetuer adipiscing elit. Odio at accumsan himenaeos feugiat ante. Viverra himenaeos congue fermentum ipsum magnis vel non. Vel eros orci nibh nisl malesuada lacus odio? Dapibus iaculis fringilla consequat mattis; rhoncus bibendum auctor. Cubilia venenatis risus massa sociosqu amet ultrices nulla euismod. Eleifend natoque consectetur pulvinar quisque ipsum eros. Urna vestibulum sodales lacus pretium quis netus platea.
+
+Molestie tincidunt etiam turpis nulla non ornare. Quisque quisque class erat dignissim sit natoque. Convallis pulvinar himenaeos facilisis curae laoreet condimentum magna. Consectetur taciti sapien maximus parturient himenaeos quis ipsum. Suscipit elementum euismod taciti porta posuere, massa luctus. Maximus facilisis per neque justo eleifend; posuere proin mollis. Orci at iaculis class, rutrum sagittis vivamus. Turpis turpis penatibus primis hac facilisi id faucibus!
+
+Neque natoque suscipit libero habitasse faucibus integer. Tellus maximus curae euismod; facilisi nisi facilisis. Litora elementum vestibulum neque phasellus aliquam augue porta. Rutrum nibh primis donec conubia; platea mollis tellus. Ad condimentum commodo dis duis dui sit nec. Viverra arcu dis vehicula dui id facilisis, venenatis dui. Sit lorem pellentesque cubilia eget eros; sit facilisi ornare. Integer ut id volutpat enim tempor. Netus morbi volutpat fermentum in sollicitudin.
+
+Vulputate odio phasellus rhoncus, dapibus semper orci. Duis porta mauris orci vivamus consectetur nam tellus ante. Ridiculus amet nostra nullam dignissim ut cras. Felis maecenas tortor pellentesque leo varius porta justo condimentum. Curabitur gravida litora primis odio auctor aliquam aenean sed mi. Commodo enim neque pharetra accumsan aliquam. Consequat placerat egestas sem dolor condimentum senectus ornare suscipit.
+
+Lobortis duis a proin in placerat aliquet metus proin. Aliquet curabitur orci dictum ligula augue. Dui litora fringilla cursus vel suscipit odio semper mi ad. Conubia molestie sapien viverra ultrices fusce? Aenean felis mattis eros pellentesque nisi amet netus adipiscing. Nostra rutrum id lacinia tempus aenean. Curae tristique semper elementum vitae ad nisi. Urna vitae metus sagittis rutrum ullamcorper fringilla; enim proin odio. Ultricies hac felis laoreet vestibulum tristique. Maecenas per feugiat nam arcu ac lorem arcu aptent magna."
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Yes" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Yes"
+icon = ExtResource("2_nfv3e")
+
+[node name="Maybe" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+text = "...
+"
+
+[node name="No" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "No"
+icon = ExtResource("3_dwdr3")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option?"
+icon_alignment = 1
+
+[node name="CheckBox2" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option?"
+icon_alignment = 1
+
+[node name="CheckBox3" type="CheckBox" parent="Control/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option?"
+icon_alignment = 1

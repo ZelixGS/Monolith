@@ -1,0 +1,165 @@
+[gd_scene load_steps=8 format=3 uid="uid://bw0f4ajltweur"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_sfc82"]
+[ext_resource type="Script" path="res://Interface/Config/Config.gd" id="2_a168m"]
+
+[sub_resource type="Gradient" id="Gradient_r3s5u"]
+offsets = PackedFloat32Array(0.1, 1)
+colors = PackedColorArray(0, 0, 0, 0.498039, 0.1, 0.1, 0.1, 0.498039)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2g4gs"]
+gradient = SubResource("Gradient_r3s5u")
+width = 1920
+height = 1080
+fill_to = Vector2(0, 1)
+
+[sub_resource type="Curve" id="Curve_41tgb"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.5488, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_y47lm"]
+curve = SubResource("Curve_41tgb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_q0yin"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(960, 1, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 200.0
+initial_velocity_max = 600.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_y47lm")
+color = Color(0.38, 0.057, 0.057, 0.74902)
+turbulence_enabled = true
+
+[node name="Config" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_sfc82")
+script = ExtResource("2_a168m")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_2g4gs")
+
+[node name="Control" type="Control" parent="Background"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Background/Control"]
+position = Vector2(0, 32)
+amount = 128
+process_material = SubResource("ParticleProcessMaterial_q0yin")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Gameplay" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Gameplay"
+
+[node name="Graphics" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Graphics"
+
+[node name="Audio" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Audio"
+
+[node name="Keybindings" type="Button" parent="MarginContainer/VBoxContainer/Buttons"]
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Keybindings"
+
+[node name="Settings" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Gameplay" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Settings"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Settings/Gameplay"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Graphics" type="MarginContainer" parent="MarginContainer/VBoxContainer/Settings"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Settings/Graphics"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Settings/Graphics/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Settings/Graphics/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/VBoxContainer/Settings"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Settings/Audio"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Settings/Audio/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Settings/Audio/ScrollContainer/VBoxContainer"]
+layout_mode = 2
