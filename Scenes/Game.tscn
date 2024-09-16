@@ -1,69 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxftt33u2k6n4"]
+[gd_scene load_steps=3 format=3 uid="uid://dxftt33u2k6n4"]
 
-[ext_resource type="PackedScene" uid="uid://c8xvotqrru1vd" path="res://Floors/FloorOne.tscn" id="1_nyqlo"]
-[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="2_khw56"]
-[ext_resource type="PackedScene" uid="uid://c5mnnn7roloes" path="res://Interface/Panels/LeftPanel.tscn" id="2_uxjd4"]
-[ext_resource type="PackedScene" uid="uid://cexuceb2niyai" path="res://Interface/Panels/RightPanel.tscn" id="4_kr2hi"]
-[ext_resource type="PackedScene" uid="uid://bw0f4ajltweur" path="res://Interface/Config/Config.tscn" id="6_h5etw"]
+[ext_resource type="PackedScene" uid="uid://cvjhbo8kablty" path="res://Interface/Interface.tscn" id="1_cbkad"]
+[ext_resource type="PackedScene" uid="uid://c8xvotqrru1vd" path="res://Scenes/Levels/LevelOne.tscn" id="1_nyqlo"]
 
-[node name="Game" type="Node" groups=["master"]]
+[node name="Game" type="Node2D" groups=["master"]]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" parent="." instance=ExtResource("1_cbkad")]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("2_khw56")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/MarginContainer"]
-layout_mode = 2
-
-[node name="Left" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" instance=ExtResource("2_uxjd4")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="CanvasLayer/Control/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/AspectRatioContainer"]
-custom_minimum_size = Vector2(1080, 960)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/AspectRatioContainer/SubViewportContainer"]
-handle_input_locally = false
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
-use_hdr_2d = true
-canvas_item_default_texture_filter = 0
-size = Vector2i(1080, 960)
-size_2d_override = Vector2i(272, 240)
-size_2d_override_stretch = true
-render_target_update_mode = 4
-
-[node name="LevelOne" parent="CanvasLayer/Control/MarginContainer/HBoxContainer/AspectRatioContainer/SubViewportContainer/SubViewport" instance=ExtResource("1_nyqlo")]
-
-[node name="Right" parent="CanvasLayer/Control/MarginContainer/HBoxContainer" instance=ExtResource("4_kr2hi")]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Config" parent="CanvasLayer" instance=ExtResource("6_h5etw")]
-visible = false
+[node name="LevelOne" parent="." instance=ExtResource("1_nyqlo")]

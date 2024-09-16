@@ -19,5 +19,5 @@ func _on_state_change() -> void:
 
 func _on_player_detector_entered() -> void:
 	if state == STATE.UNCOLLECTED:
-		GameManager.data.player_health += amount
+		Event.pickup_health.emit(amount)
 		state = STATE.COLLECTED

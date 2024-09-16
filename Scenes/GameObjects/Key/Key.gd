@@ -27,5 +27,5 @@ func _on_state_change() -> void:
 
 func _on_player_detector_entered() -> void:
 	if state == STATE.UNCOLLECTED:
-		GameManager.add_key(key_name)
+		Event.pickup_key.emit(key_name)
 		state = STATE.COLLECTED

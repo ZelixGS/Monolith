@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://cum4bst6hosav"]
+
+[ext_resource type="Script" path="res://Interface/Elements/GameOver/GameOver.gd" id="1_dnw5x"]
+[ext_resource type="StyleBox" uid="uid://bh61l13juroto" path="res://Interface/Styles/GreenBox.tres" id="1_ws52g"]
+[ext_resource type="StyleBox" uid="uid://cfexaqjldss46" path="res://Interface/Styles/RedBox.tres" id="2_l2mcv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_04hbc"]
+font_size = 128
+
+[node name="GameOver" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dnw5x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Game Over..."
+label_settings = SubResource("LabelSettings_04hbc")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NewGame" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("1_ws52g")
+text = "New Game"
+
+[node name="Reload" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reload"
+
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 72)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = ExtResource("2_l2mcv")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Reload" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_quit_pressed"]

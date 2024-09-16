@@ -38,6 +38,7 @@ func move(direction: Vector2) -> void:
 	if interact_ray.is_colliding():
 		var target: Object = interact_ray.get_collider()
 		if target.has_method("interact"):
+			@warning_ignore("unsafe_method_access")
 			target.interact()
 	if wall_ray.is_colliding():
 		return

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Setting" load_steps=2 format=3 uid="uid://djg78ubs2bef1"]
+
+[ext_resource type="Script" path="res://Scripts/Global/Configuration/Setting.gd" id="1_exqia"]
+
+[resource]
+script = ExtResource("1_exqia")
+name = "Master Volume"
+section = "Audio"
+value = 0.75
+default = 0.75
+hidden = false
+details = ""
+type = 1
+slider_minimum = 0.0
+slider_maximum = 1.0
+slider_step = 0.05
+slider_rounded = false
+slider_percentage = true

@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://nr8fko53h4rl"]
+
+[ext_resource type="Script" path="res://Interface/Widgets/IconLabel/IconLabel.gd" id="1_aes2r"]
+[ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="2_6jncn"]
+
+[node name="IconLabel" type="HBoxContainer"]
+theme_override_constants/separation = 2
+script = ExtResource("1_aes2r")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_6jncn")
+expand_mode = 2
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "1000"

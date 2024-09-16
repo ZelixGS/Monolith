@@ -1,10 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://b3wnv6qvc3exq"]
+[gd_scene load_steps=2 format=3 uid="uid://b3wnv6qvc3exq"]
 
-[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_xcdt5"]
 [ext_resource type="Script" path="res://Interface/Widgets/HSliderEdit/HSliderEdit.gd" id="2_whqxh"]
 
 [node name="HSliderEdit" type="HBoxContainer"]
-theme = ExtResource("1_xcdt5")
+size_flags_horizontal = 3
 script = ExtResource("2_whqxh")
 
 [node name="HSlider" type="HSlider" parent="."]
@@ -22,7 +21,6 @@ custom_minimum_size = Vector2(128, 32)
 layout_mode = 2
 text = "100%"
 alignment = 1
-max_length = 4
+max_length = 5
 
-[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
 [connection signal="text_submitted" from="LineEdit" to="." method="_on_line_edit_text_submitted"]

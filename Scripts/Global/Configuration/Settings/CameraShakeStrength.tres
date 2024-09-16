@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Setting" load_steps=2 format=3 uid="uid://d2pw6wi0m0212"]
+
+[ext_resource type="Script" path="res://Scripts/Global/Configuration/Setting.gd" id="1_tpyak"]
+
+[resource]
+script = ExtResource("1_tpyak")
+name = "Camera Shake Strength"
+section = "Gameplay"
+value = 1.0
+default = 1.0
+hidden = false
+details = ""
+type = 1
+slider_minimum = 0.0
+slider_maximum = 1.0
+slider_step = 0.05
+slider_rounded = false
+slider_percentage = false

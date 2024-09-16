@@ -1,27 +1,31 @@
-[gd_resource type="Resource" script_class="GameResource" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="SaveFile" load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://Resources/Classes/GameRes.gd" id="1_cbogd"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Level.gd" id="1_6ka0l"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/PlayerStats.gd" id="2_ginur"]
+[ext_resource type="Script" path="res://Scripts/Classes/SaveFile.gd" id="3_d6dpi"]
 
-[resource]
-script = ExtResource("1_cbogd")
-player_position = Vector2(152, 216)
-player_health = 2600
-player_attack = 10
-player_defense = 5
-player_gold = 5
-keys = {}
-level_data = {
-"LevelOne": {
-"AttackPowerUp": 0,
-"AttackPowerUp2": 0,
-"AttackPowerUp3": 0,
+[sub_resource type="Resource" id="Resource_k3p5y"]
+script = ExtResource("1_6ka0l")
+objects = {
 "BigHealthPotion": 1,
-"Door": 2,
 "HealthPotion": 1,
 "HealthPotion2": 1,
 "HealthPotion3": 1,
-"Key": 0,
-"Monster": 0,
-"Monster2": 0
+"Key": 1
 }
+
+[sub_resource type="Resource" id="Resource_ho2oq"]
+script = ExtResource("2_ginur")
+health = 2600
+attack = 100
+defense = 100
+gold = 0
+position = Vector2(0, 0)
+
+[resource]
+script = ExtResource("3_d6dpi")
+player = SubResource("Resource_ho2oq")
+level = {
+"LevelOne": SubResource("Resource_k3p5y")
 }
+keys = {}

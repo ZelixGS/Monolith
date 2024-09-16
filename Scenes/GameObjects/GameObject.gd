@@ -1,3 +1,4 @@
+@icon("res://Scenes/GameObjects/icon_gear.png")
 class_name GameObject extends Node2D
 
 signal update(gameobj: GameObject)
@@ -10,7 +11,7 @@ var last_state: int = 0
 		state = value
 		update.emit(self)
 		_on_state_change()
-		Event.emit_signal("state_change", self)
+		Event.object_state_changed.emit(name, state)
 
 func _ready() -> void:
 	_on_state_change()

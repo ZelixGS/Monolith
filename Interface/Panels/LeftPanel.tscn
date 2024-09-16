@@ -14,7 +14,7 @@ offset_bottom = 632.0
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="Options" parent="HBoxContainer" instance=ExtResource("1_pkb1i")]
+[node name="Menu" parent="HBoxContainer" instance=ExtResource("1_pkb1i")]
 layout_mode = 2
 
 [node name="Floor" parent="HBoxContainer" instance=ExtResource("2_i3vf6")]

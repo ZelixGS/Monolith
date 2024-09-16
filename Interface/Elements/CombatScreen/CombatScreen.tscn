@@ -1,0 +1,108 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8niale46dd2c"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_hwt3r"]
+[ext_resource type="Texture2D" uid="uid://bbrepkf8c8ghm" path="res://Assets/Sprites/Monsters/Skeleton.png" id="2_ufdhy"]
+[ext_resource type="PackedScene" uid="uid://nr8fko53h4rl" path="res://Interface/Widgets/IconLabel/IconLabel.tscn" id="3_k060m"]
+[ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="4_5s8sy"]
+[ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="5_6p4n6"]
+[ext_resource type="Texture2D" uid="uid://u0lpe680kgpe" path="res://Assets/UI/Shield.png" id="6_qpsci"]
+
+[node name="CombatScreen" type="CenterContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_hwt3r")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Attacker" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_ufdhy")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="IconLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1,000"
+texture = ExtResource("4_5s8sy")
+texture_color = Color(0.431373, 0.705882, 0.6, 1)
+
+[node name="IconLabel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1,000"
+texture = ExtResource("5_6p4n6")
+texture_color = Color(0.988235, 0.611765, 0.643137, 1)
+
+[node name="IconLabel3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1,000"
+texture = ExtResource("6_qpsci")
+texture_color = Color(0.423529, 0.666667, 0.964706, 1)
+
+[node name="Margin" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(256, 0)
+layout_mode = 2
+
+[node name="Defender" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = ExtResource("2_ufdhy")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="IconLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1,000"
+texture = ExtResource("4_5s8sy")
+texture_color = Color(0.431373, 0.705882, 0.6, 1)
+
+[node name="IconLabel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1,000"
+texture = ExtResource("5_6p4n6")
+texture_color = Color(0.988235, 0.611765, 0.643137, 1)
+
+[node name="IconLabel3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1,000"
+texture = ExtResource("6_qpsci")
+texture_color = Color(0.423529, 0.666667, 0.964706, 1)
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Accept"

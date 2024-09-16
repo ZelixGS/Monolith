@@ -1,21 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://r733d2nbgj72"]
+[gd_scene load_steps=8 format=3 uid="uid://r733d2nbgj72"]
 
 [ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_noria"]
 [ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="2_ji42b"]
 [ext_resource type="Script" path="res://Interface/Panels/Stats/Stats.gd" id="2_k6ps3"]
 [ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="3_grlsr"]
+[ext_resource type="Script" path="res://Scripts/Classes/ExtendedLabel/ExtendedLabel.gd" id="4_g86wm"]
 [ext_resource type="Texture2D" uid="uid://u0lpe680kgpe" path="res://Assets/UI/Shield.png" id="4_hj00r"]
 [ext_resource type="Texture2D" uid="uid://dmb34mk158bbu" path="res://Assets/UI/Loot.png" id="5_ap5xq"]
 
-[node name="Stats" type="PanelContainer" node_paths=PackedStringArray("health_float", "attack_float", "defense_float", "gold_float")]
+[node name="Stats" type="PanelContainer"]
 offset_right = 312.0
 offset_bottom = 328.0
 theme = ExtResource("1_noria")
 script = ExtResource("2_k6ps3")
-health_float = NodePath("MarginContainer/AspectRatioContainer/Stats/Health/HealthLabel/CenterContainer/Control/HealthFloat")
-attack_float = NodePath("MarginContainer/AspectRatioContainer/Stats/Attack/AttackLabel/CenterContainer/Control/AttackFloat")
-defense_float = NodePath("MarginContainer/AspectRatioContainer/Stats/Defense/DefenseLabel/CenterContainer/Control/DefenseFloat")
-gold_float = NodePath("MarginContainer/AspectRatioContainer/Stats/Gold/GoldLabel/CenterContainer/Control/GoldFloat")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -42,23 +39,10 @@ layout_mode = 2
 texture = ExtResource("2_ji42b")
 stretch_mode = 5
 
-[node name="HealthLabel" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Health"]
-custom_minimum_size = Vector2(190, 0)
+[node name="Health" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Health"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "1,000
-"
-clip_text = true
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/AspectRatioContainer/Stats/Health/HealthLabel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/Stats/Health/HealthLabel/CenterContainer"]
-layout_mode = 2
-
-[node name="HealthFloat" type="Node2D" parent="MarginContainer/AspectRatioContainer/Stats/Health/HealthLabel/CenterContainer/Control"]
+script = ExtResource("4_g86wm")
 
 [node name="Attack" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
 layout_mode = 2
@@ -70,21 +54,10 @@ layout_mode = 2
 texture = ExtResource("3_grlsr")
 stretch_mode = 5
 
-[node name="AttackLabel" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Attack"]
-custom_minimum_size = Vector2(190, 0)
+[node name="Attack" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Attack"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "10"
-clip_text = true
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/AspectRatioContainer/Stats/Attack/AttackLabel"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/Stats/Attack/AttackLabel/CenterContainer"]
-layout_mode = 2
-
-[node name="AttackFloat" type="Node2D" parent="MarginContainer/AspectRatioContainer/Stats/Attack/AttackLabel/CenterContainer/Control"]
+script = ExtResource("4_g86wm")
 
 [node name="Defense" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
 layout_mode = 2
@@ -96,21 +69,10 @@ layout_mode = 2
 texture = ExtResource("4_hj00r")
 stretch_mode = 5
 
-[node name="DefenseLabel" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Defense"]
-custom_minimum_size = Vector2(190, 0)
+[node name="Defense" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Defense"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "5"
-clip_text = true
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/AspectRatioContainer/Stats/Defense/DefenseLabel"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/Stats/Defense/DefenseLabel/CenterContainer"]
-layout_mode = 2
-
-[node name="DefenseFloat" type="Node2D" parent="MarginContainer/AspectRatioContainer/Stats/Defense/DefenseLabel/CenterContainer/Control"]
+script = ExtResource("4_g86wm")
 
 [node name="Gold" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
 layout_mode = 2
@@ -122,18 +84,7 @@ layout_mode = 2
 texture = ExtResource("5_ap5xq")
 stretch_mode = 5
 
-[node name="GoldLabel" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Gold"]
-custom_minimum_size = Vector2(190, 0)
+[node name="Gold" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Gold"]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-text = "0"
-clip_text = true
-
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/AspectRatioContainer/Stats/Gold/GoldLabel"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Control" type="Control" parent="MarginContainer/AspectRatioContainer/Stats/Gold/GoldLabel/CenterContainer"]
-layout_mode = 2
-
-[node name="GoldFloat" type="Node2D" parent="MarginContainer/AspectRatioContainer/Stats/Gold/GoldLabel/CenterContainer/Control"]
+script = ExtResource("4_g86wm")

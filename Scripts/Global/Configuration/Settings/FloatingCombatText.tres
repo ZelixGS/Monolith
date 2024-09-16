@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Setting" load_steps=2 format=3 uid="uid://c4lruoih4ig4p"]
+
+[ext_resource type="Script" path="res://Scripts/Global/Configuration/Setting.gd" id="1_ya075"]
+
+[resource]
+script = ExtResource("1_ya075")
+name = "Floating Combat Text"
+section = "Gameplay"
+value = 1.0
+default = 1.0
+hidden = false
+details = ""
+type = 0
+slider_minimum = 0.0
+slider_maximum = 1.0
+slider_step = 0.05
+slider_rounded = false
+slider_percentage = false

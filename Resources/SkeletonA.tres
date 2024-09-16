@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_55ccl")
 monster_name = "Skeleton A"
-health = 300
-attack = 30
+health = 100000
+attack = 10000
 defense = 5
 gold = 100
 sprite = ExtResource("2_8fctx")

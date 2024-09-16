@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://cvjhbo8kablty"]
+
+[ext_resource type="Script" path="res://Interface/Interface.gd" id="1_r0216"]
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_yru48"]
+[ext_resource type="PackedScene" uid="uid://c5mnnn7roloes" path="res://Interface/Panels/LeftPanel.tscn" id="2_xhmxo"]
+[ext_resource type="PackedScene" uid="uid://cexuceb2niyai" path="res://Interface/Panels/RightPanel.tscn" id="3_msm6u"]
+[ext_resource type="PackedScene" uid="uid://fdf4oxl5kkrf" path="res://Interface/Elements/Background/Background.tscn" id="4_cos5y"]
+[ext_resource type="PackedScene" uid="uid://bw0f4ajltweur" path="res://Interface/Elements/Config/Menu.tscn" id="4_yncmb"]
+[ext_resource type="PackedScene" uid="uid://cum4bst6hosav" path="res://Interface/Elements/GameOver/GameOver.tscn" id="5_qesx6"]
+
+[node name="Interface" type="CanvasLayer"]
+script = ExtResource("1_r0216")
+
+[node name="Main" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yru48")
+
+[node name="Gameplay" type="MarginContainer" parent="Main"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Left" parent="Main/Gameplay" instance=ExtResource("2_xhmxo")]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Right" parent="Main/Gameplay" instance=ExtResource("3_msm6u")]
+layout_mode = 2
+size_flags_horizontal = 10
+
+[node name="Background" parent="Main" instance=ExtResource("4_cos5y")]
+layout_mode = 1
+mouse_filter = 2
+
+[node name="Menu" parent="Main" instance=ExtResource("4_yncmb")]
+layout_mode = 1
+
+[node name="GameOver" parent="Main" instance=ExtResource("5_qesx6")]
+visible = false
+layout_mode = 1

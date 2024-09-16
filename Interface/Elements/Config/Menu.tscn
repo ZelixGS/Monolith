@@ -1,0 +1,138 @@
+[gd_scene load_steps=6 format=3 uid="uid://bw0f4ajltweur"]
+
+[ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_ful4p"]
+[ext_resource type="Script" path="res://Interface/Elements/Config/Menu.gd" id="1_p5k18"]
+[ext_resource type="PackedScene" uid="uid://7li133syg6v0" path="res://Scripts/Global/Configuration/ConfigWidget/ConfigWidget.tscn" id="4_16r28"]
+[ext_resource type="StyleBox" uid="uid://bh61l13juroto" path="res://Interface/Styles/GreenBox.tres" id="4_vqy40"]
+[ext_resource type="StyleBox" uid="uid://cfexaqjldss46" path="res://Interface/Styles/RedBox.tres" id="5_qegy6"]
+
+[node name="Menu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ful4p")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_p5k18")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="BtnContinue" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("4_vqy40")
+text = "Continue"
+
+[node name="BtnGameplay" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Gameplay"
+
+[node name="BtnGraphics" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Graphics"
+
+[node name="BtnAudio" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Audio"
+
+[node name="BtnInterface" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+text = "Interface"
+
+[node name="BtnApplySettings" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+text = "Apply"
+
+[node name="BtnQuit" type="Button" parent="HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 72)
+layout_mode = 2
+theme_override_styles/normal = ExtResource("5_qegy6")
+text = "Quit"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Gameplay" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="camera_shake_strength" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/Gameplay" instance=ExtResource("4_16r28")]
+layout_mode = 2
+setting_name = "camera_shake_strength"
+
+[node name="floating_combat_text" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/Gameplay" instance=ExtResource("4_16r28")]
+layout_mode = 2
+setting_name = "floating_combat_text"
+
+[node name="Graphics" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Audio" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="master_audio" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer/Audio" instance=ExtResource("4_16r28")]
+layout_mode = 2
+setting_name = "master_audio"
+
+[node name="Interface" type="VBoxContainer" parent="HBoxContainer/VBoxContainer2/ScrollContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnContinue" to="." method="_on_btn_continue_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnGameplay" to="." method="_on_btn_gameplay_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnGraphics" to="." method="_on_btn_graphics_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnAudio" to="." method="_on_btn_audio_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnInterface" to="." method="_on_btn_interface_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnApplySettings" to="." method="_on_apply_settings_pressed"]
+[connection signal="pressed" from="HBoxContainer/VBoxContainer/BtnQuit" to="." method="_on_btn_quit_pressed"]

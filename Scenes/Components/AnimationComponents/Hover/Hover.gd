@@ -34,8 +34,10 @@ func _process(delta: float) -> void:
 		time += delta
 
 	if type == TYPE.SIN:
+		@warning_ignore("unsafe_property_access")
 		get_parent().position.y = sin(time * frequency) * amplitude
 	if type == TYPE.COS:
+		@warning_ignore("unsafe_property_access")
 		get_parent().position.y = cos(time * frequency) * amplitude
 
 func _get_configuration_warnings() -> PackedStringArray:

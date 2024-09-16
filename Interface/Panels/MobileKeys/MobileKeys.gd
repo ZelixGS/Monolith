@@ -9,7 +9,11 @@ extends PanelContainer
 func _on_nine_patch_rect_resized() -> void:
 	if nine_patch_rect:
 		var button_size: Vector2 = nine_patch_rect.size
+		@warning_ignore("unsafe_property_access")
 		touch_left.shape.size = button_size
+		@warning_ignore("unsafe_property_access")
 		touch_up.shape.size = button_size
+		@warning_ignore("unsafe_property_access")
 		touch_down.shape.size = button_size
+		@warning_ignore("unsafe_property_access")
 		touch_right.shape.size = button_size
