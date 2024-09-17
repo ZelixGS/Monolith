@@ -21,28 +21,23 @@ func load_save_file() -> SaveFile:
 		printerr("[SaveManager] Could not find save: %s" % get_file_name())
 		var new: SaveFile = SaveFile.new()
 		new.player = PlayerStats.new()
+		new.inventory = Inventory.new()
 		return new
 
-func save_to_disk(save_message: String = "") -> void:
-	if save_message != "":
-		print("[SaveManager] %s" % save_message)
-		print(get_file_name())
-	ResourceSaver.save(save_file, get_file_name())
 
-func save_game(player: PlayerStats, level: Level) -> void:
-	save_player(player)
-	save_level(level)
-
-func save_player(player: PlayerStats) -> void:
-	save_file.player = player
-	save_to_disk("Saving Player...")
-
-func save_level(level: Level) -> void:
-	save_file.level[level.name] = level
-	save_to_disk("Saving Level: %s..." % level.name)
+func save_game() -> void:
+	print("Starting Save...")
+	var status: Error = ResourceSaver.save(save_file, get_file_name())
+	if status == Error.OK:
+		print("Successfully Saved.")
+	else:
+		print("[SaveManger] ERROR:%s" % status)
 
 func load_player() -> PlayerStats:
 	return save_file.player
+
+func load_inventory() -> Inventory:
+	return save_file.inventory
 
 func load_level(name: String) -> Level:
 	if save_file.level.has(name):

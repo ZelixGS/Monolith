@@ -246,6 +246,10 @@ position = Vector2(120, 200)
 position = Vector2(136, 184)
 state = 2
 
+[node name="Door2" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(120, 152)
+key = 0
+
 [node name="HealthPotion" parent="Objects" instance=ExtResource("6_o2vwm")]
 position = Vector2(168, 216)
 

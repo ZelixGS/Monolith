@@ -1,29 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://c4ytcdcbys3mq"]
+[gd_scene load_steps=6 format=3 uid="uid://c4ytcdcbys3mq"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Door/Door.gd" id="1_obdm1"]
-[ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="2_bc2tm"]
+[ext_resource type="Script" path="res://Scenes/Components/Lock/Lock.gd" id="2_4gykf"]
+[ext_resource type="Texture2D" uid="uid://b6g75mawjgmjs" path="res://Assets/Sprites/Doors/Closed.png" id="2_dwakg"]
+[ext_resource type="PackedScene" uid="uid://dgxquc7773221" path="res://Scenes/Components/ToggleCollision/ToggleCollision.tscn" id="3_h1mmo"]
 [ext_resource type="PackedScene" uid="uid://cyoi7r00qpkgd" path="res://Scenes/Components/Interactable/Interactable.tscn" id="4_5clsv"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8tkg"]
-size = Vector2(16, 16)
 
 [node name="Door" type="Node2D"]
 self_modulate = Color(0.85, 0.75, 0.1, 1)
 z_index = 2
 script = ExtResource("1_obdm1")
 
+[node name="Lock" type="Node" parent="."]
+script = ExtResource("2_4gykf")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0.85, 0.75, 0.1, 1)
-texture = ExtResource("2_bc2tm")
-region_enabled = true
+texture = ExtResource("2_dwakg")
 region_rect = Rect2(48, 144, 16, 16)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
+[node name="ToggleCollision" parent="." instance=ExtResource("3_h1mmo")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("RectangleShape2D_b8tkg")
+[node name="Interactable2D" parent="." instance=ExtResource("4_5clsv")]
 
-[node name="Interactable" parent="." instance=ExtResource("4_5clsv")]
-
-[connection signal="interaction" from="Interactable" to="." method="_on_interactable_interaction"]
+[connection signal="unlocked" from="Lock" to="." method="_on_lock_unlocked"]
+[connection signal="interaction" from="Interactable2D" to="." method="_on_interactable_2d_interaction"]

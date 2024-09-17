@@ -10,22 +10,20 @@ var last_state: int = 0
 		last_state = state
 		state = value
 		update.emit(self)
-		_on_state_change()
+		call_deferred("on_state_change")
 		Event.object_state_changed.emit(name, state)
 
 func _ready() -> void:
-	_on_state_change()
-	_on_ready()
+	on_ready()
 
-func _on_ready() -> void:
+func on_ready() -> void:
 	pass
 
-func _on_state_change() -> void:
+func on_state_change() -> void:
 	pass
 
 func reset() -> void:
 	pass
 
-
-func _on_player_detector_entered() -> void:
+func on_player_detector_entered() -> void:
 	pass # Replace with function body.

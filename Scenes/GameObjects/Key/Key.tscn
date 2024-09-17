@@ -13,7 +13,7 @@ texture = ExtResource("1_hkq1x")
 region_enabled = true
 region_rect = Rect2(512, 176, 16, 16)
 
-[node name="PlayerDetector" parent="." instance=ExtResource("4_76yg1")]
+[node name="PlayerDetector2D" parent="." instance=ExtResource("4_76yg1")]
 visible = false
 
-[connection signal="entered" from="PlayerDetector" to="." method="_on_player_detector_entered"]
+[connection signal="entered" from="PlayerDetector2D" to="." method="_on_player_detector_entered"]

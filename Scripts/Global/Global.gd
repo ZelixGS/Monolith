@@ -7,11 +7,6 @@ func get_master_scene() -> Node:
 		master_scene = get_tree().get_first_node_in_group("player")
 	return master_scene
 
-
-func get_common_color(_color_name: String) -> Color:
-	return Color.WHITE
-
-
 func fade_in(node: Node, duration: float = 0.25, color: Color = Color.WHITE) -> void:
 	if node.get("modulate") == null:
 		return

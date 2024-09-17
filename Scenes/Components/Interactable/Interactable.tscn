@@ -5,7 +5,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vn85t"]
 radius = 6.0
 
-[node name="Interactable" type="Area2D"]
+[node name="Interactable2D" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
 monitorable = false

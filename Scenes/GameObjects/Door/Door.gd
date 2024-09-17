@@ -1,49 +1,69 @@
 @tool
+@icon("res://Scenes/GameObjects/Door/icon_door.png")
 class_name Door extends GameObject
 
-enum STATE { CLOSED, OPENED, LOCKED, BARRED }
+enum STATE { CLOSED, OPENED, LOCKED, BARRED, SEALED }
 
-@export_category("Lock")
-@export var lock_name: String = "yellow"
-@export var lock_color: Color = Color(0.85, 0.75, 0.10):
+@export var key: Lock.TYPE = Lock.TYPE.YELLOW:
 	set(value):
-		lock_color = value
-		if sprite_2d:
-			sprite_2d.self_modulate = lock_color
+		key = value
+		call_deferred("set_lock")
+		call_deferred("set_color")
 
 @export_category("Sprite")
-@export var closed_sprite: Rect2 = Rect2(48, 144, 16, 16)
-@export var opened_sprite: Rect2 = Rect2(32, 144, 16, 16)
-@export var locked_sprite: Rect2 = Rect2(0, 144, 16, 16)
-@export var barred_sprite: Rect2 = Rect2(128, 176, 16, 16)
+@export var barred_sprite: Texture2D = preload("res://Assets/Sprites/Doors/Barred.png")
+@export var closed_sprite: Texture2D = preload("res://Assets/Sprites/Doors/Closed.png")
+@export var locked_sprite: Texture2D = preload("res://Assets/Sprites/Doors/Locked.png")
+@export var opened_sprite: Texture2D = preload("res://Assets/Sprites/Doors/Opened.png")
+@export var sealed_sprite: Texture2D = preload("res://Assets/Sprites/Doors/Sealed.png")
 
+@onready var lock: Lock = $Lock
 @onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var collision_shape_2d: CollisionShape2D = $StaticBody2D/CollisionShape2D
+@onready var toggle_collision: ToggleCollision = $ToggleCollision
+@onready var interactable_2d: Interactable2D = $Interactable2D
 
-func _on_state_change() -> void:
-	if sprite_2d:
-		sprite_2d.self_modulate = lock_color
+func set_lock() -> void:
+	lock.key = key
+
+func set_color() -> void:
+	match key:
+		Lock.TYPE.NONE:
+			sprite_2d.self_modulate = Color.WHITE
+		Lock.TYPE.YELLOW:
+			sprite_2d.self_modulate = Color(0.85, 0.75, 0.10)
+		Lock.TYPE.BLUE:
+			sprite_2d.self_modulate = Color(0.42, 0.66, 0.96)
+		Lock.TYPE.RED:
+			sprite_2d.self_modulate = Color(0.99, 0.30, 0.36)
+		Lock.TYPE.SKULL:
+			sprite_2d.self_modulate = Color(0.61, 0.59, 0.56)
+		_:
+			sprite_2d.self_modulate = Color(0.85, 0.75, 0.10)
+
+func on_state_change() -> void:
 	match state:
 		STATE.CLOSED:
-			if sprite_2d:
-				sprite_2d.region_rect = closed_sprite
-			if collision_shape_2d:
-				collision_shape_2d.set_deferred("disabled", false)
+			sprite_2d.texture = closed_sprite
+			toggle_collision.enable()
+			interactable_2d.enable()
 		STATE.OPENED:
-			if sprite_2d:
-				sprite_2d.region_rect = opened_sprite
-			if collision_shape_2d:
-				collision_shape_2d.set_deferred("disabled", true)
+			sprite_2d.texture = opened_sprite
+			toggle_collision.disable()
+			interactable_2d.disable()
 		STATE.LOCKED:
-			if sprite_2d:
-				sprite_2d.region_rect = locked_sprite
-			if collision_shape_2d:
-				collision_shape_2d.set_deferred("disabled", false)
+			sprite_2d.texture = locked_sprite
+			toggle_collision.enable()
+			interactable_2d.enable()
 		STATE.BARRED:
-			if sprite_2d:
-				sprite_2d.region_rect = barred_sprite
-			if collision_shape_2d:
-				collision_shape_2d.set_deferred("disabled", false)
+			sprite_2d.texture = barred_sprite
+			toggle_collision.enable()
+			interactable_2d.enable()
+		STATE.SEALED:
+			sprite_2d.texture = sealed_sprite
+			toggle_collision.enable()
+			interactable_2d.enable()
+
+#region Change State Methods
 
 func close_door() -> void:
 	state = STATE.CLOSED
@@ -60,15 +80,24 @@ func unlock_door() -> void:
 func bar_door() -> void:
 	state = STATE.BARRED
 
-func _on_interactable_interaction() -> void:
+func seal_door() -> void:
+	state = STATE.SEALED
+
+#endregion
+
+func _on_lock_unlocked() -> void:
+	open_door()
+
+func _on_interactable_2d_interaction() -> void:
 	match state:
 		STATE.LOCKED:
-			if GameManager.has_key(lock_name):
-				GameManager.remove_key(lock_name)
-				state = STATE.OPENED
-			else:
-				pass #TODO Add Sound
+			lock.check_lock()
+		STATE.OPENED:
+			pass
 		STATE.BARRED:
 			pass #TODO Play Sound
 		STATE.CLOSED:
+			#TODO Play Sound
 			state = STATE.OPENED
+		STATE.SEALED:
+			pass #TODO Play Sound

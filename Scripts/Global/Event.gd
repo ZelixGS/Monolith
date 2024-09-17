@@ -11,8 +11,7 @@ signal pickup_health(value: int)
 signal pickup_attack(value: int)
 signal pickup_defense(value: int)
 signal pickup_gold(value: int)
-signal pickup_key(value: String)
-
+signal pickup_key(value: Lock.TYPE, amount: int)
 
 signal object_state_changed(obj_name: String, state: int)
 signal flag(_flag_res: Flag)
@@ -26,6 +25,7 @@ signal ui_toggle_menu
 signal ui_new_game
 signal ui_reload_game
 signal ui_quit_game
+signal ui_key(key: Lock.TYPE, amount: int)
 
 signal audio_master(value: float)
 signal audio_sound(value: float)

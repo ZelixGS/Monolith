@@ -12,8 +12,10 @@ class_name ExtendedLabel extends Label
 
 func update_text(value: Variant, force_animate: bool = false) -> void:
 	if animate or force_animate:
+		var current: float = float(text)
+		var final: float = float(value)
 		var tween: Tween = get_tree().create_tween().set_trans(transition).set_ease(easing)
-		tween.tween_method(animation, int(text), float(value), duration)
+		tween.tween_method(animation, current, final, duration)
 	else:
 		if enable_digit_grouping:
 			text = digit_grouping(value)

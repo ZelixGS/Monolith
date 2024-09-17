@@ -46,4 +46,5 @@ func move(direction: Vector2) -> void:
 	movement_tween.tween_property(self, "global_position", global_position + (direction * 16), movement_speed)
 	moving = true
 	await movement_tween.finished
+	Event.player_position.emit(global_position)
 	moving = false

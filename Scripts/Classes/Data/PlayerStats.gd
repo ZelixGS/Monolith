@@ -20,10 +20,7 @@ class_name PlayerStats extends Resource
 		gold = value
 		Event.player_gold.emit(gold)
 
-@export var position: Vector2 = Vector2.ZERO:
-	set(value):
-		position = value
-		Event.player_position.emit(position)
+@export var position: Vector2 = Vector2.ZERO
 
 func _init(_health: int = 1000, _attack: int = 100, _defense: int = 100, _gold: int = 0, _position: Vector2 = Vector2.ZERO) -> void:
 	health = _health

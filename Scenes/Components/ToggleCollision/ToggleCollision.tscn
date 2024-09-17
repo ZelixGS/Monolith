@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgxquc7773221"]
 
-[ext_resource type="Script" path="res://Scenes/Components/ToggleCollision/toggle_collision.gd" id="1_ctedx"]
+[ext_resource type="Script" path="res://Scenes/Components/ToggleCollision/ToggleCollision.gd" id="1_wn5rl"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_joqjs"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8tkg"]
 size = Vector2(16, 16)
 
-[node name="ToggleCollison" type="AnimatableBody2D"]
-script = ExtResource("1_ctedx")
+[node name="ToggleCollision" type="StaticBody2D"]
+script = ExtResource("1_wn5rl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource("RectangleShape2D_joqjs")
+shape = SubResource("RectangleShape2D_b8tkg")

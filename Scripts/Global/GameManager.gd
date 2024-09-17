@@ -2,9 +2,12 @@ extends Node
 
 const PLAYER_SCENE: PackedScene = preload("res://Scenes/Player/Player.tscn")
 
+signal ready_for_initialization(tile_map_layer: LevelNode)
+
 var game_name: String = "Zelix"
 
 var player: PlayerStats
+var inventory: Inventory
 var level: Level
 
 var current_player: Player
@@ -14,47 +17,34 @@ var save_manager: SaveManager = SaveManager.new(game_name)
 var combat_manager: CombatManager = CombatManager.new()
 
 func _ready() -> void:
+	connect_signals()
+	load_save_file()
+
+func connect_signals() -> void:
 	Event.pickup_health.connect(player_health)
 	#Event.pickup_attack.connect()
 	#Event.pickup_defense.connect()
 	#Event.pickup_gold.connect()
-	#Event.pickup_key.connect()
+	Event.pickup_key.connect(pickup_key)
+	Event.player_position.connect(player_position)
 	Event.object_state_changed.connect(gameobject_state)
 	Event.ui_quit_game.connect(quit_game)
+	ready_for_initialization.connect(initalize)
 
-	current_player = get_player()
-	current_level = get_level()
-
+func load_save_file() -> void:
 	player = save_manager.load_player()
-	if current_level:
-		level = save_manager.load_level(current_level.name)
-
-	initialize_level()
-	initialize_player()
+	inventory = save_manager.load_inventory()
 
 #region Initializers
+func initalize(map: LevelNode) -> void:
+	current_level = map
+	level = save_manager.load_level(current_level.name)
 
-func get_level() -> LevelNode:
-	var _level: LevelNode = get_tree().get_first_node_in_group("level")
-	if not _level:
-		printerr("[GameManager] Could not find [Level]")
-	return _level
-
-func get_player() -> Player:
-	var _player: Player = get_tree().get_first_node_in_group("player")
-	if not _player:
-		printerr("[GameManager] Could not find [Player]")
-	return _player
-
-func initalize() -> void:
 	initialize_level()
 	initialize_player()
 	initialize_camera()
 
 func initialize_level() -> void:
-	if level == null:
-		print("[GameManager] Could not find [Level Data] to load")
-		return
 	for child: GameObject in current_level.objects.get_children():
 		if level.objects.has(child.name):
 			child.state = level.objects[child.name]
@@ -68,12 +58,6 @@ func initialize_player() -> void:
 		current_player.global_position = current_level.entrance_from_below.global_position
 	call_deferred("update_player_stats")
 
-func update_player_stats() -> void:
-	Event.player_health.emit(player.health)
-	Event.player_attack.emit(player.attack)
-	Event.player_defense.emit(player.defense)
-	Event.player_gold.emit(player.gold)
-
 func initialize_camera() -> void:
 	pass
 #endregion
@@ -84,12 +68,19 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_WM_CLOSE_REQUEST:
 		quit_game()
 
-func quit_game(bypass_saving: bool = false) -> void:
+func quit_game(save_game: bool = true) -> void:
 	print("Quitting!")
-	save_manager.save_player(player)
+	if save_game:
+		save_manager.save_game()
 	get_tree().quit()
 
 #endregion
+
+func update_player_stats() -> void:
+	Event.player_health.emit(player.health)
+	Event.player_attack.emit(player.attack)
+	Event.player_defense.emit(player.defense)
+	Event.player_gold.emit(player.gold)
 
 func gameobject_state(obj_name: String, state: int) -> void:
 	if level:
@@ -100,21 +91,8 @@ func gameobject_state(obj_name: String, state: int) -> void:
 func player_health(amount: int) -> void:
 	player.health += amount
 
+func player_position(position: Vector2) -> void:
+	player.position = position
 
-
-##region Key
-#func has_key(key_name: String) -> bool:
-	#return data.keys.has(key_name)
-#
-#func add_key(key_name: String) -> void:
-	#if has_key(key_name):
-		#data.keys[key_name] += 1
-	#else:
-		#data.keys[key_name] = 1
-#
-#func remove_key(key_name: String) -> void:
-	#if data.keys[key_name] > 1:
-		#data.keys[key_name] -= 1
-	#else:
-		#data.keys.erase(key_name)
-##endregion
+func pickup_key(key: Lock.TYPE, amount: int) -> void:
+	inventory.add_key(key, amount)
