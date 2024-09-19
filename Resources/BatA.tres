@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_yisnh")
-monster_name = "BatA"
-health = 350
+name = "Bat"
+health = 50
 attack = 20
 defense = 0
-gold = 10
+gold = 5
 sprite = ExtResource("2_bob52")
-color = Color(0.960784, 0.960784, 0.960784, 1)
+color = Color(0.520366, 0.520366, 0.520366, 1)
 hover = true

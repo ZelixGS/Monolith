@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_hwt3r"]
 [ext_resource type="Script" path="res://Interface/Elements/CombatScreen/CombatScreen.gd" id="2_87ks6"]
 [ext_resource type="Texture2D" uid="uid://bbrepkf8c8ghm" path="res://Assets/Sprites/Monsters/Skeleton.png" id="2_ufdhy"]
-[ext_resource type="PackedScene" uid="uid://nr8fko53h4rl" path="res://Interface/Widgets/IconLabel/IconLabel.tscn" id="3_k060m"]
 [ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="4_5s8sy"]
+[ext_resource type="PackedScene" uid="uid://bnvskn5agxs4e" path="res://Interface/Widgets/ExtendedLabel/ExtendedLabel.tscn" id="4_nmhxh"]
 [ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="5_6p4n6"]
 [ext_resource type="Texture2D" uid="uid://u0lpe680kgpe" path="res://Assets/UI/Shield.png" id="6_qpsci"]
 [ext_resource type="Texture2D" uid="uid://m6r7k6bbrhc7" path="res://Assets/Sprites/Monsters/Bat.png" id="8_eed55"]
@@ -496,29 +496,38 @@ texture = ExtResource("2_ufdhy")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="AttackerHealth" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+[node name="AttackerHealth" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("4_nmhxh")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "1,000"
-texture = ExtResource("4_5s8sy")
-texture_color = Color(0.431373, 0.705882, 0.6, 1)
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("4_5s8sy")
+icon_color = Color(0.1562, 0.71, 0.49771, 1)
 
-[node name="AttackerAttack" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+[node name="AttackerAttack" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("4_nmhxh")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "1,000"
-texture = ExtResource("5_6p4n6")
-texture_color = Color(0.988235, 0.611765, 0.643137, 1)
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("5_6p4n6")
+icon_color = Color(0.99, 0.3069, 0.363825, 1)
 
-[node name="AttackerDefense" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+[node name="AttackerDefense" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("4_nmhxh")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "1,000"
-texture = ExtResource("6_qpsci")
-texture_color = Color(0.423529, 0.666667, 0.964706, 1)
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("6_qpsci")
+icon_color = Color(0.423529, 0.666667, 0.964706, 1)
 
 [node name="Margin" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(256, 0)
@@ -536,29 +545,38 @@ texture = ExtResource("8_eed55")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="DefenderHealth" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+[node name="DefenderHealth" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("4_nmhxh")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "1,000"
-texture = ExtResource("4_5s8sy")
-texture_color = Color(0.431373, 0.705882, 0.6, 1)
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("4_5s8sy")
+icon_color = Color(0.1562, 0.71, 0.49771, 1)
 
-[node name="DefenderAttack" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+[node name="DefenderAttack" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("4_nmhxh")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "1,000"
-texture = ExtResource("5_6p4n6")
-texture_color = Color(0.988235, 0.611765, 0.643137, 1)
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("5_6p4n6")
+icon_color = Color(0.99, 0.3069, 0.363825, 1)
 
-[node name="DefenderDefense" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+[node name="DefenderDefense" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("4_nmhxh")]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "1,000"
-texture = ExtResource("6_qpsci")
-texture_color = Color(0.423529, 0.666667, 0.964706, 1)
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("6_qpsci")
+icon_color = Color(0.423529, 0.666667, 0.964706, 1)
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2

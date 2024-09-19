@@ -12,14 +12,14 @@ func _ready() -> void:
 	Event.connect("player_defense", update_defense)
 	Event.connect("player_gold", update_gold)
 
-func update_health(value: int, use_animation: bool = true) -> void:
-	health.update_text(value, use_animation)
+func update_health(value: int) -> void:
+	health.number = value
 
-func update_attack(value: int, use_animation: bool = true) -> void:
-	attack.update_text(value, use_animation)
+func update_attack(value: int) -> void:
+	attack.number = value
 
-func update_defense(value: int, use_animation: bool = true) -> void:
-	defense.update_text(value, use_animation)
+func update_defense(value: int) -> void:
+	defense.number = value
 
-func update_gold(value: int, use_animation: bool = true) -> void:
-	gold.update_text(value, use_animation)
+func update_gold(value: int) -> void:
+	gold.number = value

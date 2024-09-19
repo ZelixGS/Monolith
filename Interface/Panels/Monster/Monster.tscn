@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxk7fu6fat4iw"]
+[gd_scene load_steps=7 format=3 uid="uid://dxk7fu6fat4iw"]
 
 [ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_0gei6"]
 [ext_resource type="Texture2D" uid="uid://bbrepkf8c8ghm" path="res://Assets/Sprites/Monsters/Skeleton.png" id="2_jqcbc"]
+[ext_resource type="PackedScene" uid="uid://bnvskn5agxs4e" path="res://Interface/Widgets/ExtendedLabel/ExtendedLabel.tscn" id="3_hjdkj"]
 [ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="3_iuirs"]
 [ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="4_kwmxv"]
 [ext_resource type="Texture2D" uid="uid://u0lpe680kgpe" path="res://Assets/UI/Shield.png" id="5_5trfw"]
@@ -13,90 +14,53 @@ theme = ExtResource("1_0gei6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_horizontal = 4
+alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("2_jqcbc")
 stretch_mode = 5
 
-[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 18)
+[node name="Health" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_hjdkj")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
-text = "Skeleton"
-horizontal_alignment = 1
-vertical_alignment = 1
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("3_iuirs")
+icon_color = Color(0.1562, 0.71, 0.49771, 1)
 
-[node name="Health" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/VBoxContainer"]
+[node name="Attack" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_hjdkj")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 4
+type = 1
+number = 1000.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("4_kwmxv")
+icon_color = Color(0.99, 0.3069, 0.363825, 1)
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/VBoxContainer/Health"]
-self_modulate = Color(0.431373, 0.705882, 0.6, 1)
-custom_minimum_size = Vector2(64, 64)
+[node name="Defense" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_hjdkj")]
+unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture = ExtResource("3_iuirs")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/VBoxContainer/Health"]
-custom_minimum_size = Vector2(100, 32)
-layout_mode = 2
-size_flags_horizontal = 2
-text = "10,000"
-horizontal_alignment = 2
-
-[node name="Attack" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/VBoxContainer/Attack"]
-self_modulate = Color(0.988235, 0.611765, 0.643137, 1)
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture = ExtResource("4_kwmxv")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/VBoxContainer/Attack"]
-custom_minimum_size = Vector2(100, 32)
-layout_mode = 2
-size_flags_horizontal = 2
-text = "10,000"
-horizontal_alignment = 2
-
-[node name="Defense" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/VBoxContainer/Defense"]
-self_modulate = Color(0.423529, 0.666667, 0.964706, 1)
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-texture = ExtResource("5_5trfw")
-stretch_mode = 5
-
-[node name="Label" type="Label" parent="MarginContainer/AspectRatioContainer/VBoxContainer/Defense"]
-custom_minimum_size = Vector2(100, 32)
-layout_mode = 2
-size_flags_horizontal = 2
-text = "10,000"
-horizontal_alignment = 2
+type = 1
+number = 500.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("5_5trfw")
+icon_color = Color(0.423529, 0.666667, 0.964706, 1)

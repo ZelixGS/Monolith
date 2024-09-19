@@ -5,11 +5,11 @@
 
 [resource]
 script = ExtResource("1_55ccl")
-monster_name = "Skeleton A"
-health = 100000
-attack = 10000
-defense = 5
-gold = 100
+name = "Skeleton"
+health = 20
+attack = 20
+defense = 0
+gold = 10
 sprite = ExtResource("2_8fctx")
-color = Color(0.960784, 0.960784, 0.960784, 1)
+color = Color(1, 1, 1, 1)
 hover = false

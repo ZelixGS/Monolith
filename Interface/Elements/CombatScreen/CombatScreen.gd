@@ -5,13 +5,13 @@ class_name CombatScreen extends CenterContainer
 @onready var accept: Button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Accept
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-@onready var attacker_health: IconLabel = %AttackerHealth
-@onready var attacker_attack: IconLabel = %AttackerAttack
-@onready var attacker_defense: IconLabel = %AttackerDefense
+@onready var attacker_health: ExtendedLabel = %AttackerHealth
+@onready var attacker_attack: ExtendedLabel = %AttackerAttack
+@onready var attacker_defense: ExtendedLabel = %AttackerDefense
 
-@onready var defender_health: IconLabel = %DefenderHealth
-@onready var defender_attack: IconLabel = %DefenderAttack
-@onready var defender_defense: IconLabel = %DefenderDefense
+@onready var defender_health: ExtendedLabel = %DefenderHealth
+@onready var defender_attack: ExtendedLabel = %DefenderAttack
+@onready var defender_defense: ExtendedLabel = %DefenderDefense
 
 func _ready() -> void:
 	Event.ui_combat_setup_stage.connect(setup)
@@ -29,15 +29,15 @@ func _ready() -> void:
 
 func setup(attacker: Stats, defender: Stats) -> void:
 	attacker_sprite.texture = attacker.texture
-	attacker_health.set_label(attacker.health)
-	attacker_attack.set_label(attacker.attack)
-	attacker_defense.set_label(attacker.defense)
+	attacker_health.number = attacker.health
+	attacker_attack.number = attacker.attack
+	attacker_defense.number = attacker.defense
 	attacker_sprite.self_modulate.a = 1
 
 	defender_sprite.texture = defender.texture
-	defender_health.set_label(defender.health)
-	defender_attack.set_label(defender.attack)
-	defender_defense.set_label(defender.defense)
+	defender_health.number = defender.health
+	defender_attack.number = defender.attack
+	defender_defense.number = defender.defense
 	defender_sprite.self_modulate.a = 1
 
 func reset() -> void:
@@ -53,7 +53,7 @@ func attacker_animation() -> void:
 	animation_player.play("left_attack")
 
 func attacker_health_text(amount: int) -> void:
-	attacker_health.set_label(amount)
+	attacker_health.number = amount
 
 func attacker_defeated() -> void:
 	animation_player.play("left_death")
@@ -62,7 +62,7 @@ func defender_animation() -> void:
 	animation_player.play("right_attack")
 
 func defender_health_text(amount: int) -> void:
-	defender_health.set_label(amount)
+	defender_health.number = amount
 
 func defender_defeated() -> void:
 	animation_player.play("right_death")

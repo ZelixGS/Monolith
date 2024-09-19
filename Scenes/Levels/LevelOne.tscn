@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://c8xvotqrru1vd"]
+[gd_scene load_steps=17 format=4 uid="uid://c8xvotqrru1vd"]
 
 [ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="1_gm03x"]
 [ext_resource type="Texture2D" uid="uid://dlswwdrrx2wme" path="res://Assets/Sprites/CavernWalls.png" id="2_4igoj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://ds3udpec48gpy" path="res://Scenes/GameObjects/Pickups/Attack/AttackPowerUp.tscn" id="8_e5mog"]
 [ext_resource type="PackedScene" uid="uid://dag18ww4h77yh" path="res://Scenes/GameObjects/Monster/Monster.tscn" id="9_jrrvf"]
 [ext_resource type="Resource" uid="uid://db36o86fdnatf" path="res://Resources/BatA.tres" id="10_61lra"]
+[ext_resource type="Resource" uid="uid://c8fl7chyxxh8o" path="res://Resources/SkeletonA.tres" id="12_buean"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2km7w"]
 texture = ExtResource("1_gm03x")
@@ -270,12 +271,21 @@ position = Vector2(120, 120)
 [node name="AttackPowerUp3" parent="Objects" instance=ExtResource("8_e5mog")]
 position = Vector2(120, 104)
 
-[node name="Monster" parent="Objects" instance=ExtResource("9_jrrvf")]
+[node name="Bat" parent="Objects" instance=ExtResource("9_jrrvf")]
+position = Vector2(152, 120)
+monster_stats = ExtResource("10_61lra")
+
+[node name="Bat2" parent="Objects" instance=ExtResource("9_jrrvf")]
+position = Vector2(168, 136)
+monster_stats = ExtResource("10_61lra")
+
+[node name="Bat3" parent="Objects" instance=ExtResource("9_jrrvf")]
 position = Vector2(184, 120)
 monster_stats = ExtResource("10_61lra")
 
-[node name="Monster2" parent="Objects" instance=ExtResource("9_jrrvf")]
-position = Vector2(216, 120)
+[node name="Monster" parent="Objects" instance=ExtResource("9_jrrvf")]
+position = Vector2(56, 88)
+monster_stats = ExtResource("12_buean")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(136, 120)

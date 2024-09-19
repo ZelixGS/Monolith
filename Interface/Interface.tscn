@@ -34,21 +34,26 @@ theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
 [node name="Left" parent="Main/Gameplay" instance=ExtResource("2_xhmxo")]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 2
 
 [node name="Right" parent="Main/Gameplay" instance=ExtResource("3_msm6u")]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 size_flags_horizontal = 10
 
 [node name="Background" parent="Main" instance=ExtResource("4_cos5y")]
+visible = false
 layout_mode = 1
 mouse_filter = 2
 
 [node name="Menu" parent="Main" instance=ExtResource("4_yncmb")]
+visible = false
 layout_mode = 1
 
 [node name="CombatScreen" parent="Main" instance=ExtResource("8_4i8pq")]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -61,4 +66,5 @@ offset_right = 416.0
 offset_bottom = 298.0
 
 [node name="GameOver" parent="Main" instance=ExtResource("5_qesx6")]
+visible = false
 layout_mode = 1

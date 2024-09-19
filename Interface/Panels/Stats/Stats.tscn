@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="2_ji42b"]
 [ext_resource type="Script" path="res://Interface/Panels/Stats/Stats.gd" id="2_k6ps3"]
 [ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="3_grlsr"]
-[ext_resource type="Script" path="res://Scripts/Classes/ExtendedLabel/ExtendedLabel.gd" id="4_g86wm"]
+[ext_resource type="PackedScene" uid="uid://bnvskn5agxs4e" path="res://Interface/Widgets/ExtendedLabel/ExtendedLabel.tscn" id="3_qbu5n"]
 [ext_resource type="Texture2D" uid="uid://u0lpe680kgpe" path="res://Assets/UI/Shield.png" id="4_hj00r"]
 [ext_resource type="Texture2D" uid="uid://dmb34mk158bbu" path="res://Assets/UI/Loot.png" id="5_ap5xq"]
 
@@ -21,70 +21,52 @@ theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="AspectRatioContainer" type="AspectRatioContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="Stats" type="VBoxContainer" parent="MarginContainer/AspectRatioContainer"]
+[node name="Stats" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
+alignment = 1
 
-[node name="Health" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/Stats/Health"]
-self_modulate = Color(0.431373, 0.705882, 0.6, 1)
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("2_ji42b")
-stretch_mode = 5
-
-[node name="Health" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Health"]
+[node name="Health" parent="MarginContainer/Stats" instance=ExtResource("3_qbu5n")]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_g86wm")
+type = 1
+number = 2500.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("2_ji42b")
+icon_color = Color(0.1562, 0.71, 0.49771, 1)
 
-[node name="Attack" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/Stats/Attack"]
-self_modulate = Color(0.988235, 0.611765, 0.643137, 1)
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("3_grlsr")
-stretch_mode = 5
-
-[node name="Attack" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Attack"]
+[node name="Attack" parent="MarginContainer/Stats" instance=ExtResource("3_qbu5n")]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_g86wm")
+type = 1
+number = 2500.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("3_grlsr")
+icon_color = Color(0.99, 0.3069, 0.363825, 1)
 
-[node name="Defense" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/Stats/Defense"]
-self_modulate = Color(0.423529, 0.666667, 0.964706, 1)
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("4_hj00r")
-stretch_mode = 5
-
-[node name="Defense" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Defense"]
+[node name="Defense" parent="MarginContainer/Stats" instance=ExtResource("3_qbu5n")]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_g86wm")
+type = 1
+number = 2500.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("4_hj00r")
+icon_color = Color(0.423529, 0.666667, 0.964706, 1)
 
-[node name="Gold" type="HBoxContainer" parent="MarginContainer/AspectRatioContainer/Stats"]
-layout_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/AspectRatioContainer/Stats/Gold"]
-self_modulate = Color(0.831373, 0.501961, 0.301961, 1)
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture = ExtResource("5_ap5xq")
-stretch_mode = 5
-
-[node name="Gold" type="Label" parent="MarginContainer/AspectRatioContainer/Stats/Gold"]
+[node name="Gold" parent="MarginContainer/Stats" instance=ExtResource("3_qbu5n")]
 unique_name_in_owner = true
 layout_mode = 2
-script = ExtResource("4_g86wm")
+type = 1
+number = 2500.0
+formatting = 1
+decimals = 0
+animate = 1
+icon = ExtResource("5_ap5xq")
+icon_color = Color(0.831373, 0.501961, 0.301961, 1)

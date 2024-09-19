@@ -7,7 +7,7 @@ enum STATE { UNCOLLECTED, COLLECTED }
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var player_detector_2d: PlayerDetector2D = $PlayerDetector2D
 
-func _on_state_change() -> void:
+func on_state_change() -> void:
 	if state == STATE.COLLECTED:
 		visible = false
 		player_detector_2d.disable()
