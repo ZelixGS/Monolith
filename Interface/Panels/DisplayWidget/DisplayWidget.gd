@@ -22,8 +22,8 @@ func _ready() -> void:
 		label.text = format_seperator(number)
 
 func format_seperator(num: int, seperator: String = ",") -> String:
-	var string = str(num)
-	var mod = string.length() % 3
+	var string: String = str(num)
+	var mod: float = string.length() % 3
 	var result: String = ""
 	for i: int in range(0, string.length()):
 		if i != 0 && i % 3 == mod:

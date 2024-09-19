@@ -7,6 +7,7 @@ var allow_input: bool = true
 @onready var facing: Node2D = $Facing
 @onready var wall_ray: RayCast2D = $Facing/WallRay
 @onready var interact_ray: RayCast2D = $Facing/InteractRay
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 func _ready() -> void:
 	Event.connect("enable_player_input", enable_input)

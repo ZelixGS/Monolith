@@ -1,5 +1,5 @@
 @icon("./icon_dialog.png")
-class_name ExtendedLabel extends Label
+class_name ExtendedLabelOLD extends Label
 
 @export_category("Digit Grouping")
 @export var enable_digit_grouping: bool = true
@@ -36,6 +36,6 @@ func digit_grouping(num: Variant) -> String:
 		if i != 0 && i % 3 == mod:
 			result += seperator
 		result += string[i]
-	if float(num) < 0:
-		result = '-'+result
+	#if float(num) < 0:
+		#result = '-'+result
 	return result

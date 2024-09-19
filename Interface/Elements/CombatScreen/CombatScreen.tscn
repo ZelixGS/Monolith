@@ -1,11 +1,463 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8niale46dd2c"]
+[gd_scene load_steps=16 format=3 uid="uid://c8niale46dd2c"]
 
 [ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_hwt3r"]
+[ext_resource type="Script" path="res://Interface/Elements/CombatScreen/CombatScreen.gd" id="2_87ks6"]
 [ext_resource type="Texture2D" uid="uid://bbrepkf8c8ghm" path="res://Assets/Sprites/Monsters/Skeleton.png" id="2_ufdhy"]
 [ext_resource type="PackedScene" uid="uid://nr8fko53h4rl" path="res://Interface/Widgets/IconLabel/IconLabel.tscn" id="3_k060m"]
 [ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="4_5s8sy"]
 [ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="5_6p4n6"]
 [ext_resource type="Texture2D" uid="uid://u0lpe680kgpe" path="res://Assets/UI/Shield.png" id="6_qpsci"]
+[ext_resource type="Texture2D" uid="uid://m6r7k6bbrhc7" path="res://Assets/Sprites/Monsters/Bat.png" id="8_eed55"]
+[ext_resource type="StyleBox" uid="uid://bh61l13juroto" path="res://Interface/Styles/GreenBox.tres" id="9_dcc72"]
+
+[sub_resource type="Animation" id="Animation_fbfts"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:self_modulate:a")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_r2mi4"]
+resource_name = "left_attack"
+step = 0.125
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -10, -0.25, 0, 0.25, 0, 35, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.785398, -0.25, 0, 0.25, 0, 0.785398, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.375, 0.5, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.375, 0.5, 1)
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7a0bl"]
+resource_name = "left_death"
+length = 1.5
+step = 0.125
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_finished"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -0.4, -0.25, 0, 0.25, 0, -1.5708, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.75)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:self_modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1.125, 1.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1.125, 1.5)
+}
+
+[sub_resource type="Animation" id="Animation_pe28r"]
+resource_name = "right_attack"
+step = 0.125
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0, 35, -0.25, 0, 0.25, 0, 10, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, -0.8, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1.1, -0.25, 0, 0.25, 0, 0.9, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 1)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:x")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.375, 0.5, 1)
+}
+tracks/6/type = "bezier"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker/AttackerSprite:scale:y")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.375, 0.5, 1)
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_finished"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_3374e"]
+resource_name = "right_death"
+length = 1.5
+step = 0.125
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_finished"
+}]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.4, -0.25, 0, 0.25, 0, 1.55, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.75)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:self_modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.5, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1.125, 1.5)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 0.8, -0.25, 0, 0.25, 0, 1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1.5)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender/DefenderSprite:scale:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1.2, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 0.75, 1.125, 1.5)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jcm1s"]
+_data = {
+"RESET": SubResource("Animation_fbfts"),
+"left_attack": SubResource("Animation_r2mi4"),
+"left_death": SubResource("Animation_7a0bl"),
+"right_attack": SubResource("Animation_pe28r"),
+"right_death": SubResource("Animation_3374e")
+}
 
 [node name="CombatScreen" type="CenterContainer"]
 anchors_preset = 15
@@ -14,6 +466,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_hwt3r")
+script = ExtResource("2_87ks6")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 2
@@ -35,28 +488,32 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker"]
-custom_minimum_size = Vector2(200, 200)
+[node name="AttackerSprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
 texture = ExtResource("2_ufdhy")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="IconLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+[node name="AttackerHealth" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "1,000"
 texture = ExtResource("4_5s8sy")
 texture_color = Color(0.431373, 0.705882, 0.6, 1)
 
-[node name="IconLabel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+[node name="AttackerAttack" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "1,000"
 texture = ExtResource("5_6p4n6")
 texture_color = Color(0.988235, 0.611765, 0.643137, 1)
 
-[node name="IconLabel3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+[node name="AttackerDefense" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Attacker" instance=ExtResource("3_k060m")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "1,000"
@@ -71,28 +528,32 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender"]
-custom_minimum_size = Vector2(200, 200)
+[node name="DefenderSprite" type="TextureRect" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(256, 256)
 layout_mode = 2
-texture = ExtResource("2_ufdhy")
+texture = ExtResource("8_eed55")
 expand_mode = 4
 stretch_mode = 5
 
-[node name="IconLabel" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+[node name="DefenderHealth" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "1,000"
 texture = ExtResource("4_5s8sy")
 texture_color = Color(0.431373, 0.705882, 0.6, 1)
 
-[node name="IconLabel2" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+[node name="DefenderAttack" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "1,000"
 texture = ExtResource("5_6p4n6")
 texture_color = Color(0.988235, 0.611765, 0.643137, 1)
 
-[node name="IconLabel3" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+[node name="DefenderDefense" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Defender" instance=ExtResource("3_k060m")]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 text = "1,000"
@@ -103,6 +564,16 @@ texture_color = Color(0.423529, 0.666667, 0.964706, 1)
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Accept" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
+theme_override_styles/normal = ExtResource("9_dcc72")
+disabled = true
 text = "Accept"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jcm1s")
+}
+autoplay = "RESET"
+
+[connection signal="button_up" from="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2/Accept" to="." method="_on_accept_button_up"]

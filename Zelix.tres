@@ -1,44 +1,44 @@
-[gd_resource type="Resource" script_class="SaveFile" load_steps=8 format=3]
+[gd_resource type="Resource" script_class="SaveFile" load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Classes/Data/Inventory.gd" id="1_bou35"]
-[ext_resource type="Script" path="res://Scripts/Classes/Data/Level.gd" id="2_facuw"]
-[ext_resource type="Script" path="res://Scripts/Classes/Data/PlayerStats.gd" id="3_xpots"]
-[ext_resource type="Script" path="res://Scripts/Classes/SaveFile.gd" id="4_3xxs7"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/Inventory.gd" id="1_grk2v"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/Level.gd" id="2_oxl30"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/PlayerStats.gd" id="3_tjp5h"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Monsters/Player.png" id="4_l5qb0"]
+[ext_resource type="Script" path="res://Scripts/Classes/SaveFile.gd" id="5_8g1ao"]
 
-[sub_resource type="Resource" id="Resource_2femv"]
-script = ExtResource("1_bou35")
+[sub_resource type="Resource" id="Resource_wdyan"]
+script = ExtResource("1_grk2v")
 keys = {
-0: 0,
 1: 0,
 2: 0,
-3: 0
+3: 0,
+4: 0
 }
 
-[sub_resource type="Resource" id="Resource_s3aw7"]
-script = ExtResource("2_facuw")
+[sub_resource type="Resource" id="Resource_li71t"]
+script = ExtResource("2_oxl30")
 objects = {
-"BigHealthPotion": 1,
+"AttackPowerUp": 1,
 "Door": 1,
 "Door2": 1,
-"HealthPotion": 1,
-"HealthPotion2": 1,
-"HealthPotion3": 1,
-"Key": 1
+"Key": 1,
+"Monster": 1
 }
 
-[sub_resource type="Resource" id="Resource_u7ce7"]
-script = ExtResource("3_xpots")
-health = 2600
-attack = 100
+[sub_resource type="Resource" id="Resource_rjfk2"]
+script = ExtResource("3_tjp5h")
+health = 997
+attack = 103
 defense = 100
 gold = 0
-position = Vector2(232, 216)
+position = Vector2(216, 120)
+sprite = ExtResource("4_l5qb0")
 
 [resource]
-script = ExtResource("4_3xxs7")
-player = SubResource("Resource_u7ce7")
-inventory = SubResource("Resource_2femv")
+script = ExtResource("5_8g1ao")
+player = SubResource("Resource_rjfk2")
+inventory = SubResource("Resource_wdyan")
 level = {
-"LevelOne": SubResource("Resource_s3aw7")
+"LevelOne": SubResource("Resource_li71t")
 }
 keys = {}

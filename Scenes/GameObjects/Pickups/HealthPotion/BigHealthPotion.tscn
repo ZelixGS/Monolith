@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/GameObjects/Pickups/HealthPotion/HealthPotion.gd" id="1_1xqaq"]
 [ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="2_10khl"]
 [ext_resource type="Script" path="res://Scripts/Classes/ExtendedSprite2D.gd" id="3_88ivf"]
-[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector/PlayerDetector.tscn" id="4_xstq5"]
+[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector2D/PlayerDetector2D.tscn" id="4_xstq5"]
 
 [node name="BigHealthPotion" type="Node2D"]
 script = ExtResource("1_1xqaq")
@@ -16,7 +16,7 @@ region_enabled = true
 region_rect = Rect2(528, 208, 16, 16)
 script = ExtResource("3_88ivf")
 
-[node name="PlayerDetector" parent="." instance=ExtResource("4_xstq5")]
+[node name="PlayerDetector2D" parent="." instance=ExtResource("4_xstq5")]
 visible = false
 
-[connection signal="entered" from="PlayerDetector" to="." method="_on_player_detector_entered"]
+[connection signal="entered" from="PlayerDetector2D" to="." method="_on_player_detector_entered"]

@@ -11,7 +11,8 @@ var last_state: int = 0
 		state = value
 		update.emit(self)
 		call_deferred("on_state_change")
-		Event.object_state_changed.emit(name, state)
+		if not Engine.is_editor_hint():
+			Event.object_state_changed.emit(name, state)
 
 func _ready() -> void:
 	on_ready()

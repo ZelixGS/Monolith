@@ -21,10 +21,10 @@ func _ready() -> void:
 	load_save_file()
 
 func connect_signals() -> void:
-	Event.pickup_health.connect(player_health)
-	#Event.pickup_attack.connect()
-	#Event.pickup_defense.connect()
-	#Event.pickup_gold.connect()
+	Event.pickup_health.connect(pickup_health)
+	Event.pickup_attack.connect(pickup_attack)
+	Event.pickup_defense.connect(pickup_defense)
+	Event.pickup_gold.connect(pickup_gold)
 	Event.pickup_key.connect(pickup_key)
 	Event.player_position.connect(player_position)
 	Event.object_state_changed.connect(gameobject_state)
@@ -56,6 +56,7 @@ func initialize_player() -> void:
 	current_player.global_position = player.position
 	if current_player.global_position == Vector2(0, 0):
 		current_player.global_position = current_level.entrance_from_below.global_position
+	current_player.sprite_2d.texture = player.sprite
 	call_deferred("update_player_stats")
 
 func initialize_camera() -> void:
@@ -88,11 +89,30 @@ func gameobject_state(obj_name: String, state: int) -> void:
 		return
 	printerr("[GameManager] No Level Data to save to.")
 
-func player_health(amount: int) -> void:
+func pickup_health(amount: int) -> void:
 	player.health += amount
+
+func pickup_attack(amount: int) -> void:
+	player.attack += amount
+
+func pickup_defense(amount: int) -> void:
+	player.defense += amount
+
+func pickup_gold(amount: int) -> void:
+	player.gold += amount
+
+func pickup_key(key: Lock.TYPE, amount: int) -> void:
+	inventory.add_key(key, amount)
 
 func player_position(position: Vector2) -> void:
 	player.position = position
 
-func pickup_key(key: Lock.TYPE, amount: int) -> void:
-	inventory.add_key(key, amount)
+func player_started_combat(monster: Stats) -> CombatResult:
+	var result: CombatResult = await combat_manager.start_combat(player.to_stats(), monster)
+	if result.victor == CombatResult.VICTOR.AGGRESSOR:
+		#await Event.ui_combat_window_closed
+		player.health -= result.damage_taken
+	if result.victor == CombatResult.VICTOR.DEFENDER:
+		#await Event.ui_combat_window_closed
+		Event.game_over.emit()
+	return result

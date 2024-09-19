@@ -27,6 +27,28 @@ signal ui_reload_game
 signal ui_quit_game
 signal ui_key(key: Lock.TYPE, amount: int)
 
+
+signal ui_combat_start # Loop Started
+signal ui_combat_end # Loop Ended
+
+signal ui_combat_window_show # Ask for Window to Open
+signal ui_combat_window_hide # Ask for Window to Close
+
+signal ui_combat_window_opened # Window Opened
+signal ui_combat_window_closed # Window Closed
+
+signal ui_combat_complete
+signal ui_combat_awaiting_accept # Waiting for Accept Button
+
+signal ui_combat_setup_stage(attacker: Stats, defender: Stats)
+signal ui_combat_attacker_animation
+signal ui_combat_defender_animation
+signal ui_combat_attacker_defeated
+signal ui_combat_defender_defeated
+signal ui_combat_attacker_take_damage(amount: int)
+signal ui_combat_defender_take_damage(amount: int)
+signal ui_combat_animation_complete
+
 signal audio_master(value: float)
 signal audio_sound(value: float)
 signal audio_music(value: float)

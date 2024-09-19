@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_yisnh")
 monster_name = "BatA"
-health = 20
+health = 350
 attack = 20
 defense = 0
 gold = 10

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cvjhbo8kablty"]
+[gd_scene load_steps=9 format=3 uid="uid://cvjhbo8kablty"]
 
 [ext_resource type="Script" path="res://Interface/Interface.gd" id="1_r0216"]
 [ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_yru48"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://fdf4oxl5kkrf" path="res://Interface/Elements/Background/Background.tscn" id="4_cos5y"]
 [ext_resource type="PackedScene" uid="uid://bw0f4ajltweur" path="res://Interface/Elements/Config/Menu.tscn" id="4_yncmb"]
 [ext_resource type="PackedScene" uid="uid://cum4bst6hosav" path="res://Interface/Elements/GameOver/GameOver.tscn" id="5_qesx6"]
+[ext_resource type="PackedScene" uid="uid://c8niale46dd2c" path="res://Interface/Elements/CombatScreen/CombatScreen.tscn" id="8_4i8pq"]
 
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource("1_r0216")
@@ -47,6 +48,17 @@ mouse_filter = 2
 [node name="Menu" parent="Main" instance=ExtResource("4_yncmb")]
 layout_mode = 1
 
+[node name="CombatScreen" parent="Main" instance=ExtResource("8_4i8pq")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -298.0
+offset_right = 416.0
+offset_bottom = 298.0
+
 [node name="GameOver" parent="Main" instance=ExtResource("5_qesx6")]
-visible = false
 layout_mode = 1

@@ -1,5 +1,5 @@
 @tool
-extends HBoxContainer
+class_name IconLabel extends HBoxContainer
 
 @export var text: String = "":
 	set(value):
@@ -17,14 +17,14 @@ extends HBoxContainer
 		call_deferred("set_texture_color")
 
 @onready var texture_rect: TextureRect = $TextureRect
-@onready var label: Label = $Label
+@onready var label: ExtendedLabel = $Label
 
 func _ready() -> void:
 	set_texture()
-	set_label()
+	set_label(text)
 
-func set_label() -> void:
-	label.text = text
+func set_label(value: Variant) -> void:
+	label.update_text(text)
 
 func set_texture() -> void:
 	texture_rect.texture = texture

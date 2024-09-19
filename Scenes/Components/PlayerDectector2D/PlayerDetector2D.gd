@@ -1,3 +1,4 @@
+@icon("res://Scenes/Components/PlayerDectector2D/icon_character.png")
 class_name PlayerDetector2D extends Area2D
 
 signal entered

@@ -7,6 +7,15 @@ func get_master_scene() -> Node:
 		master_scene = get_tree().get_first_node_in_group("player")
 	return master_scene
 
+func control_set_pivot_center(control: Control) -> void:
+	control.pivot_offset = control.size / 2
+
+func control_set_pivot_top(control: Control) -> void:
+	control.pivot_offset = Vector2(control.size.x/2, 0)
+
+func control_set_pivot_bottom(control: Control) -> void:
+	control.pivot_offset = Vector2(control.size.x/2, control.size.y)
+
 func fade_in(node: Node, duration: float = 0.25, color: Color = Color.WHITE) -> void:
 	if node.get("modulate") == null:
 		return

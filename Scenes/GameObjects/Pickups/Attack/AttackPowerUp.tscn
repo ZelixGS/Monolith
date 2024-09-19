@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ds3udpec48gpy"]
+[gd_scene load_steps=4 format=3 uid="uid://ds3udpec48gpy"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Pickups/Attack/AttackPowerUp.gd" id="1_5a3i1"]
 [ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="2_5a317"]
-[ext_resource type="Script" path="res://Scenes/Components/AnimationComponents/Hover/Hover.gd" id="3_3qh7d"]
-[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector/PlayerDetector.tscn" id="4_4vgae"]
+[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector2D/PlayerDetector2D.tscn" id="4_4vgae"]
 
 [node name="AttackPowerUp" type="Node2D"]
 script = ExtResource("1_5a3i1")
@@ -14,10 +13,6 @@ texture = ExtResource("2_5a317")
 region_enabled = true
 region_rect = Rect2(544, 96, 16, 16)
 
-[node name="Hover" type="Node" parent="Sprite2D"]
-script = ExtResource("3_3qh7d")
+[node name="PlayerDetector2D" parent="." instance=ExtResource("4_4vgae")]
 
-[node name="PlayerDetector" parent="." instance=ExtResource("4_4vgae")]
-visible = false
-
-[connection signal="entered" from="PlayerDetector" to="." method="_on_player_detector_entered"]
+[connection signal="entered" from="PlayerDetector2D" to="." method="_on_player_detector_entered"]

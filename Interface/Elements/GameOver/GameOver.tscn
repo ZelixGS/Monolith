@@ -19,6 +19,7 @@ script = ExtResource("1_dnw5x")
 layout_mode = 2
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+self_modulate = Color(0.99, 0, 0.0825002, 1)
 layout_mode = 2
 text = "Game Over..."
 label_settings = SubResource("LabelSettings_04hbc")
