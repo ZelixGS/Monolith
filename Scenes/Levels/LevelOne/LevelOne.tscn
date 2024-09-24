@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://c8xvotqrru1vd"]
+[gd_scene load_steps=18 format=4 uid="uid://c8xvotqrru1vd"]
 
 [ext_resource type="Texture2D" uid="uid://c77eckpbb7bsl" path="res://Assets/Sprites/monochrome-transparent_packed.png" id="1_gm03x"]
 [ext_resource type="Texture2D" uid="uid://dlswwdrrx2wme" path="res://Assets/Sprites/CavernWalls.png" id="2_4igoj"]
@@ -11,7 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://ds3udpec48gpy" path="res://Scenes/GameObjects/Pickups/Attack/AttackPowerUp.tscn" id="8_e5mog"]
 [ext_resource type="PackedScene" uid="uid://dag18ww4h77yh" path="res://Scenes/GameObjects/Monster/Monster.tscn" id="9_jrrvf"]
 [ext_resource type="Resource" uid="uid://db36o86fdnatf" path="res://Resources/BatA.tres" id="10_61lra"]
-[ext_resource type="Resource" uid="uid://c8fl7chyxxh8o" path="res://Resources/SkeletonA.tres" id="12_buean"]
+[ext_resource type="PackedScene" uid="uid://0n5x6pgqfkte" path="res://Scenes/GameObjects/SlidingWall/SlidingWall.tscn" id="12_5y546"]
+[ext_resource type="PackedScene" uid="uid://chqk4l1gnc8pa" path="res://Scenes/GameObjects/Stairs/Stairs.tscn" id="12_ssknl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2km7w"]
 texture = ExtResource("1_gm03x")
@@ -222,70 +223,111 @@ sources/0 = SubResource("TileSetAtlasSource_2km7w")
 sources/2 = SubResource("TileSetAtlasSource_m4ll2")
 sources/3 = SubResource("TileSetAtlasSource_nvodv")
 
-[node name="LevelOne" type="TileMapLayer" node_paths=PackedStringArray("entrance_from_above", "entrance_from_below", "objects") groups=["level"]]
-modulate = Color(0.99, 0.3069, 0.363825, 1)
-tile_map_data = PackedByteArray("AAAAAAAAAwACAAAAAAABAAAAAwADAAIAAAACAAAAAwADAAAAAAADAAAAAwADAAIAAAAEAAAAAwADAAAAAAAFAAAAAwADAAAAAAAGAAAAAwADAAIAAAAHAAAAAwADAAAAAAAIAAAAAwADAAAAAAAJAAAAAwADAAIAAAAKAAAAAwADAAAAAAALAAAAAwADAAIAAAAMAAAAAwADAAIAAAANAAAAAwADAAAAAAAOAAAAAwADAAAAAAAAAAsAAwAAAAEAAAAAAAoAAwAEAAEAAAAAAAkAAwAAAAEAAAAAAAgAAwAAAAEAAAAAAAcAAwAAAAEAAAAAAAYAAwAEAAEAAAAAAAUAAwAAAAEAAAAAAAQAAwAEAAEAAAAAAAMAAwAEAAEAAAAAAAIAAwAAAAEAAAAAAAEAAwAEAAEAAAAQAA4AAwAEAAIAAAAPAA4AAwADAAAAAAAOAA4AAwADAAIAAAANAA4AAwADAAIAAAAMAA4AAwADAAAAAAALAA4AAwADAAIAAAAKAA4AAwADAAIAAAAJAA4AAwADAAIAAAAIAA4AAwADAAIAAAAHAA4AAwABAAEAAAAGAA4AAwABAAEAAAAFAA4AAwADAAAAAAAEAA4AAwABAAEAAAADAA4AAwADAAIAAAACAA4AAwABAAEAAAABAA4AAwADAAAAAAAAAA4AAwACAAEAAAAAAA0AAwAEAAEAAAAAAAwAAwAEAAEAAAAOAAIAAwADAAAAAAAOAAYAAwABAAAAAAAOAAUAAwAEAAEAAAAOAAQAAwABAAIAAAAGAA0AAwAAAAEAAAAGAAwAAwAEAAEAAAAGAAsAAwAFAAAAAAAGAAoAAwAEAAEAAAAGAAkAAwABAAAAAAAGAAgAAwABAAAAAAAGAAcAAwABAAAAAAAFAAgAAwAFAAAAAAAEAAgAAwACAAIAAAACAAgAAwADAAEAAAABAAgAAwAFAAAAAAAFAAsAAwADAAAAAAAEAAsAAwACAAIAAAACAAsAAwADAAEAAAABAAsAAwADAAAAAAAHAA0AAwAEAAAAAAABAAcAAwAEAAAAAAAFAAkAAwACAAEAAAABAAkAAwAEAAIAAAAFAAcAAwACAAAAAAACAA0AAwABAAIAAAAEAA0AAwABAAIAAAAMAAkAAwADAAIAAAAJAAsAAwAEAAEAAAAJAAwAAwACAAEAAAAHAAsAAwADAAEAAAAIAAcAAwAAAAIAAAAKAAcAAwAAAAIAAAAMAAcAAwAAAAIAAAAOAAcAAwACAAEAAAAQAAkAAwABAAAAAAAOAAkAAwADAAAAAAANAAkAAwAAAAAAAAALAAkAAwAAAAAAAAAKAAkAAwADAAIAAAAJAAkAAwAAAAAAAAAIAAkAAwACAAIAAAAJAAoAAwAEAAEAAAAPAAkAAwAAAAAAAAAPAAoAAwACAAEAAAANAAoAAwAAAAIAAAALAAoAAwAAAAIAAAAKAAwAAwADAAIAAAALAAwAAwADAAIAAAAMAAwAAwADAAAAAAANAAwAAwADAAIAAAAOAAwAAwADAAEAAAAQAAwAAwAEAAEAAAAKAAsAAAAkABEAAAAMAAsAAAAlABEAAAAOAAsAAAAmABEAAAAQAAsAAwAEAAEAAAANAAYAAwADAAIAAAAMAAYAAwAAAAAAAAALAAYAAwADAAAAAAAKAAYAAwAAAAAAAAAJAAYAAwABAAEAAAAIAAYAAwACAAAAAAAGAAYAAwAEAAEAAAACAAUAAwADAAEAAAABAAUAAwADAAIAAAABAAIAAwADAAIAAAACAAIAAwAAAAAAAAACAAMAAwAAAAIAAAADAAIAAwADAAIAAAAEAAIAAwADAAIAAAAFAAIAAwADAAIAAAAGAAIAAwADAAIAAAAHAAIAAwADAAAAAAAIAAIAAwADAAAAAAAJAAIAAwAAAAAAAAAKAAIAAwADAAEAAAAMAAIAAwACAAAAAAANAAIAAwADAAAAAAAMAAMAAwAEAAEAAAAMAAQAAwAEAAIAAAALAAQAAwACAAIAAAAJAAMAAwAEAAEAAAAJAAQAAwAEAAEAAAAJAAUAAwAEAAEAAAAHAAQAAwADAAEAAAAGAAQAAwACAAAAAAAGAAUAAwABAAAAAAAFAAUAAwADAAIAAAAEAAUAAwACAAIAAAAPAAAAAwADAAIAAAAPAAIAAwADAAAAAAAPAAcAAwADAAAAAAAQAAcAAwABAAAAAAAQAAUAAwAEAAEAAAAQAAQAAwAEAAEAAAAQAAMAAwAEAAEAAAAQAAIAAwABAAAAAAAQAAAAAwAEAAAAAAAQAAEAAwAEAAEAAAAQAAYAAwAEAAEAAAAQAAgAAwAEAAEAAAAQAAoAAwABAAAAAAAQAA0AAwAEAAEAAAA=")
+[node name="LevelOne" type="TileMapLayer" node_paths=PackedStringArray("entrance_from_above", "entrance_from_below") groups=["level"]]
+tile_map_data = PackedByteArray("AAAAAAAAAwACAAAAAAABAAAAAwAAAAAAAAACAAAAAwAAAAAAAAADAAAAAwADAAIAAAAEAAAAAwAAAAAAAAAFAAAAAwAAAAAAAAAGAAAAAwAAAAAAAAAHAAAAAwAAAAAAAAAIAAAAAwADAAAAAAAJAAAAAwAAAAAAAAAKAAAAAwAAAAAAAAALAAAAAwADAAIAAAAMAAAAAwADAAIAAAANAAAAAwADAAAAAAAOAAAAAwADAAAAAAAAAAsAAwAEAAEAAAAAAAoAAwAAAAEAAAAAAAkAAwAAAAEAAAAAAAgAAwAAAAEAAAAAAAcAAwAEAAEAAAAAAAYAAwAEAAEAAAAAAAQAAwAAAAEAAAAAAAMAAwAEAAEAAAAAAAIAAwAAAAEAAAAAAAEAAwAAAAEAAAAQAA4AAwAEAAIAAAAPAA4AAwACAAIAAAANAA4AAwADAAEAAAAMAA4AAwABAAEAAAALAA4AAwADAAIAAAAKAA4AAwABAAEAAAAJAA4AAwABAAEAAAAIAA4AAwADAAIAAAAHAA4AAwABAAEAAAAGAA4AAwABAAEAAAAFAA4AAwADAAAAAAAEAA4AAwADAAIAAAADAA4AAwADAAIAAAACAA4AAwADAAAAAAABAA4AAwADAAAAAAAAAA4AAwACAAEAAAAAAA0AAwAEAAEAAAAAAAwAAwAAAAEAAAAGAAoAAwABAAAAAAAGAAkAAwAFAAAAAAAGAAgAAwABAAAAAAABAAkAAwAFAAAAAAAQAAkAAwAEAAEAAAAQAAwAAwAEAAEAAAAMAAsAAwAEAAEAAAAQAAsAAwAEAAEAAAAGAAYAAwAEAAEAAAAGAAQAAwAFAAAAAAAGAAUAAwAFAAAAAAAPAAAAAwADAAIAAAAQAAcAAwABAAAAAAAQAAUAAwAEAAEAAAAQAAQAAwABAAAAAAAQAAMAAwAEAAEAAAAQAAIAAwAEAAEAAAAQAAAAAwAEAAAAAAAQAAEAAwAEAAEAAAAQAAYAAwABAAAAAAAQAAgAAwABAAAAAAAQAAoAAwABAAAAAAAQAA0AAwAEAAEAAAAMAA0AAwAEAAEAAAAMAAwAAwAEAAEAAAAMAAoAAwAAAAAAAAAKAAoAAwAAAAEAAAABAAQAAwAAAAAAAAACAAQAAwADAAEAAAAEAAQAAwACAAIAAAAAAAUAAwAAAAEAAAAFAAQAAwAAAAAAAAAKAAkAAwAFAAAAAAAKAAQAAwAFAAAAAAALAAQAAwAAAAAAAAAMAAQAAwADAAIAAAAKAAUAAwAFAAAAAAAKAAYAAwAEAAEAAAAJAAUAAwABAAEAAAAHAAUAAwABAAEAAAAJAAkAAwACAAIAAAAKAAgAAwAEAAEAAAAKAAMAAwAEAAEAAAAKAAIAAwAEAAEAAAAKAAEAAwABAAAAAAANAAQAAwAAAAAAAAAPAAQAAwADAAAAAAAPAAcAAwAFAAAAAAAOAAcAAwADAAIAAAALAAUAAwAEAAIAAAALAAkAAwAEAAAAAAAFAAkAAwAFAAAAAAAFAAUAAwACAAEAAAAFAAIAAwACAAEAAAABAAIAAwAEAAIAAAAGAAcAAwAEAAEAAAAHAAkAAwADAAEAAAAKAAwAAwAEAAEAAAAKAA0AAwABAAAAAAAGAA0AAwAAAAEAAAAGAAwAAwABAAAAAAACAAkAAwADAAEAAAABAAoAAwAEAAIAAAABAAgAAwAEAAAAAAABAAwAAwADAAAAAAACAAwAAwADAAEAAAAEAAkAAwACAAIAAAAFAAwAAwADAAAAAAAEAAwAAwACAAIAAAAJAA0AAwACAAAAAAAHAA0AAwAEAAAAAAAFAAgAAwACAAAAAAAFAAoAAwACAAEAAAABAAUAAwAEAAIAAAAGAAMAAwAEAAEAAAAGAAIAAwABAAAAAAAGAAEAAwAFAAAAAAANAAcAAwAFAAAAAAANAAYAAwABAAIAAAAHAAEAAwAEAAIAAAAJAAEAAwACAAEAAAAHAAQAAwAEAAAAAAAJAAQAAwACAAAAAAABAAEAAwAFAAAAAAAFAAEAAwAFAAAAAAAEAAEAAwACAAEAAAACAAEAAwAEAAIAAAANAAoAAwABAAEAAAANAAgAAwAEAAEAAAAMAAcAAwACAAIAAAALAAoAAwABAAEAAAAPAAoAAwADAAIAAAAPAAgAAwACAAEAAAAPAAYAAwACAAAAAAA=")
 tile_set = SubResource("TileSet_07m4q")
 script = ExtResource("4_d1r22")
 entrance_from_above = NodePath("EntranceAbove")
 entrance_from_below = NodePath("EntranceBelow")
-objects = NodePath("Objects")
 
 [node name="EntranceAbove" type="Marker2D" parent="."]
-position = Vector2(40, 24)
+position = Vector2(136, 200)
 
 [node name="EntranceBelow" type="Marker2D" parent="."]
-position = Vector2(136, 216)
+position = Vector2(232, 216)
 
-[node name="Objects" type="Node" parent="."]
+[node name="Objects" type="Node2D" parent="."]
 
 [node name="Key" parent="Objects" instance=ExtResource("4_bj57p")]
-position = Vector2(120, 200)
+position = Vector2(232, 184)
+
+[node name="Key2" parent="Objects" instance=ExtResource("4_bj57p")]
+position = Vector2(184, 120)
+key = 2
 
 [node name="Door" parent="Objects" instance=ExtResource("5_mf7ps")]
-position = Vector2(136, 184)
+position = Vector2(232, 168)
 state = 2
 
 [node name="Door2" parent="Objects" instance=ExtResource("5_mf7ps")]
-position = Vector2(120, 152)
+position = Vector2(216, 152)
 key = 0
 
+[node name="Door6" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(216, 88)
+key = 0
+
+[node name="Door7" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(168, 120)
+key = 2
+state = 2
+
+[node name="Door3" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(136, 88)
+key = 2
+state = 2
+
+[node name="Door4" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(232, 72)
+state = 2
+
+[node name="Door5" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(104, 184)
+state = 2
+
+[node name="Door8" parent="Objects" instance=ExtResource("5_mf7ps")]
+position = Vector2(232, 232)
+key = 4
+state = 3
+
 [node name="HealthPotion" parent="Objects" instance=ExtResource("6_o2vwm")]
-position = Vector2(168, 216)
+position = Vector2(200, 40)
 
 [node name="HealthPotion2" parent="Objects" instance=ExtResource("6_o2vwm")]
-position = Vector2(184, 216)
+position = Vector2(184, 40)
 
 [node name="HealthPotion3" parent="Objects" instance=ExtResource("6_o2vwm")]
-position = Vector2(200, 216)
+position = Vector2(200, 24)
+
+[node name="HealthPotion4" parent="Objects" instance=ExtResource("6_o2vwm")]
+position = Vector2(184, 184)
+
+[node name="HealthPotion5" parent="Objects" instance=ExtResource("6_o2vwm")]
+position = Vector2(184, 200)
+
+[node name="HealthPotion6" parent="Objects" instance=ExtResource("6_o2vwm")]
+position = Vector2(184, 216)
 
 [node name="BigHealthPotion" parent="Objects" instance=ExtResource("7_gkyct")]
-position = Vector2(216, 216)
+position = Vector2(184, 24)
 
 [node name="AttackPowerUp" parent="Objects" instance=ExtResource("8_e5mog")]
-position = Vector2(120, 136)
+position = Vector2(120, 40)
 
 [node name="AttackPowerUp2" parent="Objects" instance=ExtResource("8_e5mog")]
-position = Vector2(120, 120)
+position = Vector2(152, 40)
 
 [node name="AttackPowerUp3" parent="Objects" instance=ExtResource("8_e5mog")]
-position = Vector2(120, 104)
+position = Vector2(136, 24)
 
 [node name="Bat" parent="Objects" instance=ExtResource("9_jrrvf")]
-position = Vector2(152, 120)
+position = Vector2(136, 152)
 monster_stats = ExtResource("10_61lra")
 
 [node name="Bat2" parent="Objects" instance=ExtResource("9_jrrvf")]
-position = Vector2(168, 136)
+position = Vector2(120, 168)
 monster_stats = ExtResource("10_61lra")
 
 [node name="Bat3" parent="Objects" instance=ExtResource("9_jrrvf")]
-position = Vector2(184, 120)
+position = Vector2(152, 168)
 monster_stats = ExtResource("10_61lra")
 
-[node name="Monster" parent="Objects" instance=ExtResource("9_jrrvf")]
-position = Vector2(56, 88)
-monster_stats = ExtResource("12_buean")
+[node name="SlidingWall" parent="Objects" instance=ExtResource("12_5y546")]
+position = Vector2(168, 184)
+region = Vector2i(64, 16)
+
+[node name="Stairs" parent="Objects" instance=ExtResource("12_ssknl")]
+position = Vector2(136, 216)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(136, 120)

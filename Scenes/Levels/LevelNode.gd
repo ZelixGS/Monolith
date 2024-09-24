@@ -3,7 +3,7 @@ class_name LevelNode extends TileMapLayer
 @export var entrance_from_above: Marker2D
 @export var entrance_from_below: Marker2D
 
-@export var objects: Node
+@onready var objects: Node2D = $Objects
 @export var camera: Node2D
 
 func _ready() -> void:

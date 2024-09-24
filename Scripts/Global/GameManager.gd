@@ -3,6 +3,7 @@ extends Node
 const PLAYER_SCENE: PackedScene = preload("res://Scenes/Player/Player.tscn")
 
 signal ready_for_initialization(tile_map_layer: LevelNode)
+signal request_transition(direction: String)
 
 var game_name: String = "Zelix"
 

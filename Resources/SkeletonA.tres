@@ -6,8 +6,8 @@
 [resource]
 script = ExtResource("1_55ccl")
 name = "Skeleton"
-health = 20
-attack = 20
+health = 500
+attack = 100
 defense = 0
 gold = 10
 sprite = ExtResource("2_8fctx")

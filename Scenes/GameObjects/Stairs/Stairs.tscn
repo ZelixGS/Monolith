@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://chqk4l1gnc8pa"]
+
+[ext_resource type="Script" path="res://Scenes/GameObjects/Stairs/Stairs.gd" id="1_5uv7f"]
+[ext_resource type="Texture2D" uid="uid://oh5rvfiha7bo" path="res://Assets/StairsUp.png" id="2_6smr4"]
+[ext_resource type="Script" path="res://Scripts/Classes/ExtendedSprite2D.gd" id="2_vprcb"]
+[ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector2D/PlayerDetector2D.tscn" id="3_hloya"]
+
+[node name="Stairs" type="Node2D"]
+script = ExtResource("1_5uv7f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6smr4")
+script = ExtResource("2_vprcb")
+
+[node name="PlayerDetector" parent="." instance=ExtResource("3_hloya")]
+
+[connection signal="entered" from="PlayerDetector" to="." method="_on_player_detector_entered"]

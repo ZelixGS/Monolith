@@ -27,4 +27,4 @@ func reset() -> void:
 	pass
 
 func on_player_detector_entered() -> void:
-	pass # Replace with function body.
+	pass

@@ -7,6 +7,8 @@
 offset_right = 268.0
 offset_bottom = 23.0
 script = ExtResource("1_ki36e")
+formatting = 1
+animate = 1
 left_icon = NodePath("LeftIcon")
 label = NodePath("Label")
 right_icon = NodePath("RightIcon")
