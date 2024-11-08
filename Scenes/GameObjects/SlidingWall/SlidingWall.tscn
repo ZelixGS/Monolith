@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://0n5x6pgqfkte"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/SlidingWall/SlidingWall.gd" id="1_iddmd"]
-[ext_resource type="Texture2D" uid="uid://boq0swwd7upbd" path="res://Scenes/GameObjects/SlidingWall/icon_interrogation.png" id="2_014uo"]
+[ext_resource type="Texture2D" uid="uid://cmsk56crr5ws7" path="res://Assets/Sprites/GothicWalls.png" id="2_ianyc"]
 [ext_resource type="PackedScene" uid="uid://cyoi7r00qpkgd" path="res://Scenes/Components/Interactable/Interactable.tscn" id="3_o0yv1"]
 [ext_resource type="PackedScene" uid="uid://dgxquc7773221" path="res://Scenes/Components/ToggleCollision/ToggleCollision.tscn" id="4_lm0tu"]
 
@@ -11,9 +11,9 @@ region = Vector2i(16, 16)
 duration = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_014uo")
+texture = ExtResource("2_ianyc")
 region_enabled = true
-region_rect = Rect2(0, 0, 16, 16)
+region_rect = Rect2(16, 16, 16, 16)
 
 [node name="Interactable2D" parent="." instance=ExtResource("3_o0yv1")]
 

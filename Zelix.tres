@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="SaveFile" load_steps=9 format=3 uid="uid://cnr27fsp50m6m"]
+[gd_resource type="Resource" script_class="SaveFile" load_steps=9 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/Inventory.gd" id="1_irkqa"]
-[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/Level.gd" id="2_goi60"]
-[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/PlayerStats.gd" id="3_fayd2"]
-[ext_resource type="Texture2D" uid="uid://dpgo50jide343" path="res://Assets/Sprites/Monsters/Player.png" id="4_hjmnc"]
-[ext_resource type="Script" path="res://Scripts/Classes/SaveFile.gd" id="5_f1tjl"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/Inventory.gd" id="1_mkxiv"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/Level.gd" id="2_dkl18"]
+[ext_resource type="Script" path="res://Scripts/Classes/Data/Resources/PlayerStats.gd" id="3_c87d0"]
+[ext_resource type="Texture2D" path="res://Assets/Sprites/Monsters/Player.png" id="4_uc3pk"]
+[ext_resource type="Script" path="res://Scripts/Classes/SaveFile.gd" id="5_gbklr"]
 
-[sub_resource type="Resource" id="Resource_2ex4o"]
-script = ExtResource("1_irkqa")
+[sub_resource type="Resource" id="Resource_07ig4"]
+script = ExtResource("1_mkxiv")
 keys = {
 1: 0,
 2: 0,
@@ -15,36 +15,24 @@ keys = {
 4: 0
 }
 
-[sub_resource type="Resource" id="Resource_x3st5"]
-script = ExtResource("2_goi60")
-objects = {
-"AttackPowerUp": 1,
-"AttackPowerUp2": 1,
-"AttackPowerUp3": 1,
-"Bat2": 1,
-"BigHealthPotion": 1,
-"Door": 1,
-"Door2": 1,
-"HealthPotion": 1,
-"HealthPotion2": 1,
-"HealthPotion3": 1,
-"Key": 1
-}
+[sub_resource type="Resource" id="Resource_41u4p"]
+script = ExtResource("2_dkl18")
+objects = {}
 
-[sub_resource type="Resource" id="Resource_0e6yj"]
-script = ExtResource("3_fayd2")
-health = 2597
-attack = 109
+[sub_resource type="Resource" id="Resource_wgk08"]
+script = ExtResource("3_c87d0")
+health = 1000
+attack = 100
 defense = 100
 gold = 0
-position = Vector2(136, 136)
-sprite = ExtResource("4_hjmnc")
+position = Vector2(0, 0)
+sprite = ExtResource("4_uc3pk")
 
 [resource]
-script = ExtResource("5_f1tjl")
-player = SubResource("Resource_0e6yj")
-inventory = SubResource("Resource_2ex4o")
+script = ExtResource("5_gbklr")
+player = SubResource("Resource_wgk08")
+inventory = SubResource("Resource_07ig4")
 level = {
-"LevelOne": SubResource("Resource_x3st5")
+"LevelOne": SubResource("Resource_41u4p")
 }
 keys = {}

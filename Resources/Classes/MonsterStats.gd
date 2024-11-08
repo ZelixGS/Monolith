@@ -10,4 +10,4 @@ class_name MonsterStats extends Resource
 @export var hover: bool = false
 
 func to_stats() -> Stats:
-	return Stats.new(health, attack, defense, gold, false, sprite)
+	return Stats.new(health, attack, defense, gold, false, sprite, color)

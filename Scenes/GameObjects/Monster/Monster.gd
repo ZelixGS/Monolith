@@ -42,3 +42,8 @@ func _on_player_detector_entered() -> void:
 	var result: CombatResult = await GameManager.player_started_combat(monster_stats.to_stats())
 	if result.victor == CombatResult.VICTOR.AGGRESSOR:
 		state = STATE.DEAD
+
+
+func _on_mouse_detector_2d_entered() -> void:
+	print("Mouse Entered!")
+	Event.ui_mouseover_monster.emit(monster_stats.to_stats())

@@ -27,6 +27,7 @@ signal ui_reload_game
 signal ui_quit_game
 signal ui_key(key: Lock.TYPE, amount: int)
 
+signal ui_mouseover_monster(monster: Stats)
 
 signal ui_combat_start # Loop Started
 signal ui_combat_end # Loop Ended

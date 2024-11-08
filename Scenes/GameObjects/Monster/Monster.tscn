@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dag18ww4h77yh"]
+[gd_scene load_steps=7 format=3 uid="uid://dag18ww4h77yh"]
 
 [ext_resource type="Script" path="res://Scenes/GameObjects/Monster/Monster.gd" id="1_4cnp4"]
 [ext_resource type="Script" path="res://Scripts/Classes/ExtendedSprite2D.gd" id="2_77xiq"]
 [ext_resource type="Texture2D" uid="uid://b304sqbf525wd" path="res://Assets/Editor/NodeIcons/Node/icon_interrogation.png" id="2_k3k6o"]
 [ext_resource type="Script" path="res://Scenes/Components/AnimationComponents/Hover/Hover.gd" id="5_6gsxq"]
 [ext_resource type="PackedScene" uid="uid://xw5k83ncjavx" path="res://Scenes/Components/PlayerDectector2D/PlayerDetector2D.tscn" id="5_xh0s7"]
+[ext_resource type="PackedScene" uid="uid://fuaftqymmxtm" path="res://Scenes/Components/MouseDetector2D/MouseDetector2D.tscn" id="6_u2lye"]
 
 [node name="Monster" type="Node2D" groups=["monster"]]
 script = ExtResource("1_4cnp4")
@@ -21,4 +22,8 @@ enabled = false
 
 [node name="PlayerDetector2D" parent="." instance=ExtResource("5_xh0s7")]
 
+[node name="MouseDetector2D" parent="." instance=ExtResource("6_u2lye")]
+mouse_exited_signal = false
+
 [connection signal="entered" from="PlayerDetector2D" to="." method="_on_player_detector_entered"]
+[connection signal="entered" from="MouseDetector2D" to="." method="_on_mouse_detector_2d_entered"]

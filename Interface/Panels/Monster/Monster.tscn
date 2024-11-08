@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxk7fu6fat4iw"]
+[gd_scene load_steps=8 format=3 uid="uid://dxk7fu6fat4iw"]
 
 [ext_resource type="Theme" uid="uid://b7xxrd3l5ge4" path="res://Interface/Default.tres" id="1_0gei6"]
 [ext_resource type="Texture2D" uid="uid://bbrepkf8c8ghm" path="res://Assets/Sprites/Monsters/Skeleton.png" id="2_jqcbc"]
+[ext_resource type="Script" path="res://Interface/Panels/Monster/MonsterPanel.gd" id="2_vyobf"]
 [ext_resource type="PackedScene" uid="uid://bnvskn5agxs4e" path="res://Interface/Widgets/ExtendedLabel/ExtendedLabel.tscn" id="3_hjdkj"]
 [ext_resource type="Texture2D" uid="uid://dl12ch17gp1k5" path="res://Assets/UI/Health.png" id="3_iuirs"]
 [ext_resource type="Texture2D" uid="uid://djvfe1towxea0" path="res://Assets/UI/Sword.png" id="4_kwmxv"]
@@ -11,6 +12,7 @@
 offset_right = 168.0
 offset_bottom = 295.0
 theme = ExtResource("1_0gei6")
+script = ExtResource("2_vyobf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -26,6 +28,7 @@ size_flags_horizontal = 4
 alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 size_flags_vertical = 3
@@ -37,9 +40,7 @@ unique_name_in_owner = true
 layout_mode = 2
 type = 1
 number = 1000.0
-formatting = 1
 decimals = 0
-animate = 1
 icon = ExtResource("3_iuirs")
 icon_color = Color(0.1562, 0.71, 0.49771, 1)
 
@@ -48,9 +49,7 @@ unique_name_in_owner = true
 layout_mode = 2
 type = 1
 number = 1000.0
-formatting = 1
 decimals = 0
-animate = 1
 icon = ExtResource("4_kwmxv")
 icon_color = Color(0.99, 0.3069, 0.363825, 1)
 
@@ -59,8 +58,6 @@ unique_name_in_owner = true
 layout_mode = 2
 type = 1
 number = 500.0
-formatting = 1
 decimals = 0
-animate = 1
 icon = ExtResource("5_5trfw")
 icon_color = Color(0.423529, 0.666667, 0.964706, 1)
